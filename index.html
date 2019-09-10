@@ -1,128 +1,287 @@
-﻿
-<!DOCTYPE html>
-<!-- This webpage soure is based on the website of Prof Marc Chan at UTS (my former professor at PKU, http://www.finance.uts.edu.au/staff/marcc/ -->
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Xiaoyang Ye</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/ye.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
 
-<html>
-
-<head>
-	<meta name="viewport" content="width=device-width" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Xiaoyang Ye</title>
-	<link rel="stylesheet" href="MChanstyle.css" type="text/css" />
-	<link rel="shortcut icon" href="education.ico">
-
-	<style type="text/css">
-	!html,body{margin:0; padding:0;}
-	.m-box .left,.m-box .right { height: 200px; line-height:200px; text-align: left; }
-	.m-box .left{position: absolute; margin-left: 100px; width:200px; }
-	.m-box .right{margin-left:400px; width:300px; }
-	</style>
-
-<style>
-#link ul
-{
-  list-style-type:none;
-  margin:0;
-  padding:0;
-  overflow:hidden;
-}
-
-#link li
-{
-  float:left;
-}
-
-#link li a {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-right: 1px solid #FFF;
-}
-
-#link li a:hover {
-    background: #cc0000;
-}
-
-#link li ul li {
-    float: none;
-}
-
-#link li ul li a {
-    border-top: 2px solid #FFF;
-    background: #808080;
-}
-
-#link li ul {
-    display: none;
-    position: absolute;
-}
-
-#link li:hover ul {
-    display: block;
-}
-
-#link a:link,a:visited
-{
-display:block;
-width:166px;
-font-weight:bold;
-color:#FFFFFF;
-background-color: #c5c3c3;
-text-align:center;
-padding:4px;
-text-decoration:none;
-}
-
-#link a:hover,a:active
-{
-background-color:#cc0000;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="m-box">
-    <div class="left"><img src="Xiaoyang.jpg" width="100%" ></div>
-    <div class="right">
-	<p><font size="5" color="#666666"> Xiaoyang Ye</p>
-	<p><a href="mailto:yxy@umich.edu" style="color:#87CEFA" target="_blank">yxy@umich.edu</a></p>
-	<p>Ph.D. candidate, University of Michigan</p>
-	<p><a href="https://naeducation.org/naedspencer-dissertation-fellowship-program/2017-naedspencer-dissertation-fellows/" style="color:#666666" target="_blank">NAEd/Spencer Dissertation Fellow</a> 2017</p>
+<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+   
+  <div class="mdl-layout--large-screen-only mdl-layout__header-row">
     </div>
-</div>
 
-<br>
-<div id="link"><ul>
-<li><a href="http://www-personal.umich.edu/~yxy/cv.html">CV</a>
-<li><a href="http://www-personal.umich.edu/~yxy/research.html">Research</a>	
-<li><a href="http://www-personal.umich.edu/~yxy/teaching.html">Teaching</a>
-<li><a href="http://www-personal.umich.edu/~yxy/misc.html">Misc</a>
-</ul>
-</div>
-<h1></h1>
+  <div class="mdl-layout--large-screen-only mdl-layout__header-row">       
+    <h2>XIAOYANG YE</h2>
+    </div>
 
-<div class="text/css">
+  <div class="mdl-layout--large-screen-only mdl-layout__header-row">       
+	<h5>xiaoyang.ye@princeton.edu<h5>
+    </div>
 
-<p>I work on the economics of education, with a particular interest in improving policies, schools, and individual bahaviors in K-12 and higher education to reduce poverty and inequality.
-</p>
+  <div class="mdl-layout--small-screen-only mdl-layout__header-row">       
+      <h4>XIAOYANG YE</h4>
+      </div>
 
-<p>Why do I want to improve education policy and school effectiveness for the poor? <a href="http://www.boredpanda.com/dangerous-journey-to-school/" style="color:#666666" target="_blank"> <u>"25 dangerous roads to school in the world."</u>
-</a> </p> 
+  <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    </div>
 
-<p> I am a doctoral researcher at <a href="http://www.edpolicy.umich.edu/" style="color:#666666" target="_blank"><u>the Education Policy Initiative </u> of Michigan's Ford School of Public Policy.</a>
+  <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+    <a href="#home" class="mdl-layout__tab is-active">home</a>
+    <a href="#research" class="mdl-layout__tab">research</a>
+    <a href="#teaching" class="mdl-layout__tab">teaching</a>
+    <a href="files/Ye_CV.pdf" class="mdl-layout__tab">cv</a>    
+    <a href="#misc" class="mdl-layout__tab">misc</a>
+  </div>
+</header>
 
-<p> I also enjoy teaching the economics of education (K-12, higher, international) and applied econometrics (and big data) in education policy. </p>
+   <main class="mdl-layout__content">
+    <div class="mdl-layout__tab-panel is-active" id="home">
+         <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text">
+			<p>I am a postdoc with Adam Kapor, Christopher Neilson, and Seth Zimmerman in the Woodrow Wilson School at Princeton in 2019-20. I will be a postdoc with Susanna Loeb in the Annenberg Institute at Brown in 2020-22.</p>
+			<p>I work on the economics of education, with a particular interest in improving policies, schools, and individual bahaviors in K-12 and higher education to reduce poverty and inequality. </p>
+			<p>I received my Ph.D. in Higher Education (economics and K-20 policy concentrations) from the University of Michigan in 2019.</p>
+			<p>Why do I want to improve education policy and school effectiveness for the poor? One reason: <a href="http://www.boredpanda.com/dangerous-journey-to-school/" style="color:#666666" target="_blank"> <u>"25 dangerous roads to school in the world."</u></a></p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                <h4 class="mdl-cell mdl-cell--12-col">Research Projects</h4>  
+       
+			<p>My current research focuses on leveraging behavioral interventions, data and algorithms, and education policy designs to improve and equalize K-20 access, choice, and match in U.S. and China.</p>
+
+		<div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                <div class="section__circle-container__circle mdl-color--primary"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>Human decisions and machine learning in education policy</h5>
+                	Improving PreK and school choice in New Haven, CT</br>
+			Improving take-up, targeting, and effectiveness of college choice interventions in China
+		</div>
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>Access, choice, match, and success in K-12 and college</h5>
+			Effects of middle school transition, high school choice and courses, grade repeating</br>
+			College chocie behaviors and college undermatch
+                </div>
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>Expanding and equalizing the benefits of education reforms</h5>
+			Long-run impacts of education finance reform and school closure</br>
+			Free teachers college and secondary vocational educaiton
+                </div>
+              </div>
+          </section>
+        </div>
+
+        <div class="mdl-layout__tab-panel" id="research">
+
+              <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                  <div class="mdl-card mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card__supporting-text">
+                <h4 id="current">Current Research</h4>
+
+                <ul class="toc">
+                  <a href="#project1">Human decisions and machine learning in education policy</a>
+                  <a href="#project2">Access, choice, match, and success in K-12 and college</a>
+                  <a href="#project3">Expanding and equalizing the benefits of education reforms</a>
+                </ul>
+
+                <h5 id="project1">Human decisions and machine learning in education policy</h5>
+
+                <ul>
+                  <li>Human instruction vs. machine learning: Experimental evidence on improving college access and match at scale, 2018 <a href="Ye_jmp.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
+                  <li>PreK choice in New Haven, with Adam Kapor, Chris Neilson, Seth Zimmerman, in progress</li>
+                  <li>Labor market information for high school coursetaking and college-major choice, in progress</li>
+                </ul>
+
+               <h5 id="project1">Access, choice, match, and success in K-12 and college</h5>
+                
+		<ul>
+		  <li>Improving college choice for the poorest students: Results from randomized experiments in centralized admissions, 2018, <a href="Ye_2016rct.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
+		  <li>Religion and motivated cognition: When Ramadan meets the College Entrance Exam, with Ao Wang, Shaoda Wang, 2018, <a href="WWY_ramadan.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
+		  <li>How does high school math impact college choice and post-schooling earnings? Modeling simultaneously multinomial treatments and outcomes, with Stephen DesJardins, Brian McCall, 2018, [new version coming soon]
+		  <li>How college choices disadvantage disadvantaged students under centralized college admissions systems? with Prashant Loyalka, Binzhen Wu, 2018, <a href="LQWWY_undermatch.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
+		  <li>Improving social mobility by helping rural students make informed college choices, with Ao Wang, Shaoda Wang, in progress</li>
+		</ul>
+
+                <h5 id="project1">Expanding and equalizing the benefits of education reforms</h5>
+
+		<ul>
+		  <li>Intergovernmental transfer with heterogeneous accountabilities, with Yanqing Ding, Fengming Lu, <a href="DLY.pdf" style="color:#87CEFA" target="_blank">[pdf]</a>, revision requested</li>
+		  <li>Fiscal competition and coordination: Evidence from China, with Shaoda Wang, 2018, <a href="Wang_Ye_RSC.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
+		  <li>The effects of free college for future teachers: Experimental evidence from national policies in China, in progress</li>
+		</ul>
+                    </div>
+                  </div>
+                </section>
 
 
-<p> My <a href="http://www-personal.umich.edu/~yxy/Ye_jmp.pdf" style="color:#87CEFA" target="_blank">job market paper</a> examines scalable solutions for improving college access and match by leveraging behavioral interventions, data science, and school organizational policies.
+              <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                  <div class="mdl-card mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card__supporting-text">
+                      <h4>Publications in Chinese</h4>
+                      <ol>
+			  <li>Retaking college entrance exam: Evidence from a regression discontinuity design, with Yanqing Ding et al., Global Education, 2019.</li>
+			  <li>Who benefits from college expansion in China? Evaluation of access of higher education”, with Yanqing Ding, Yinduo Wu, Jin Yang, Research in Education Development, (7): 13-20, 2019.</li>
+			  <li>Who benefits from college expansion in China? Evaluation of labor market performance of college graduates, with Yanqing Ding, Yinduo Wu, Jin Yang, Journal of National Academy of Education Administration, (5):70-78, 2019.</li>
+			  <li>Undermatched college choice among low-income students, with Si Chen, Yanqing Ding, Xiao Liu, Yinduo Wu, China Economics of Education Review, 3(2): 52-80, 2018.</li>
+<li>Gaokao and education investment: Public high school performance pay under accountability”, with Yinduo
+Wu, Jin Yang, Education & Economy, 33(3): 25-35, 2017. Reprinted in Xinhua Digest, 2017(24).</li>
+<li>Why have some local governments closed more rural schools than others?”, with Yanqing Ding, Shaoda
+Wang, China Economics of Education Review, 1(4): 3-34, 2016. Lead article. Reprinted in Xinhua Digest, 2017(7).</li>
+<li>Expanding Chinese higher education: Quality and social stratification”, with Yanqing Ding, Chinese Journal
+of Sociology, 35(3): 193-220, 2015. Reprinted in Higher Education (Renmin University of China Press), 2015(9);
+Chinese Social Science Digest (Social Sciences in China Press), 2015(11).</li>
+<li>The causal effects of high school choice in China”, with Jinling Chen, Yanqing Ding, Education Research
+Monthly Review, 5: 36-45, 2014.</li>
+<li>Local government incentives, fiscal constraint and education expenditure”, in Lin et al. (eds) Public Finance Reform and Urbanization in China, China Finance & Economics Press, 292-319, 2012.</li>
+<li>Parental political capital and children’s school choice: Evidence from China”, World Economics Papers, 4:
+52-73, 2012.</li>
+<li>Village schools: A symbol of the nation or deformation of the city?”, Education Journal, 4: 101-111, 2011.</li>			
+                        </ol>
+                    </div>
+                  </div>
+                </section>
 
-<p>I am on the job market in the 2018-2019 academic year.</p>
+          </div>
 
-<h1></h1>
-<p align="center"><font color="#CAC6C5" size="2.5">#2018.11#</p>
+          <div class="mdl-layout__tab-panel" id="teaching">
+              <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                  <div class="mdl-card mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card__supporting-text">
+                      <h4>Teaching Intersts</h4>
+                      <ul>
+                          <li>Economics of education (K-12, higher, international)</li>
+                          <li>Applied econometrics and big data in public policy </li>
+                        </ul>
+                    </div>
+                  </div>
+                </section>
+
+              <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                  <div class="mdl-card mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card__supporting-text">
+                      <h4>Teaching Experience</h4>
+
+                      <h6>Graduate Student Instructor at University of Michigan</h6>
+                      <ul>
+                          <li><b>Quantitative Methods in Program Evaluation</b>, with Brian Jacob,  Fall 2017</li>
+                          <li><b>Categorical Dependent Variable Modeling</b>, with Stephen DesJardins, Fall 2016</li>
+                        </ul>
+
+                      <h6>Visiting Instructor at Peking University</h6>
+                       <ul>
+                          <li><b>Education Finance</b>, Spring 2018</li>
+                          <li><b>Education and Human Resources</b>, Spring 2017</li>
+                        </ul>
+
+                      <h6>Teaching Assistant at Peking University</h6>
+                       <ul>
+                          <li><b>Economics of Education</b>, Fall 2011, Spring 2013, Spring 2017</li>
+                          <li><b>Quantitative Methods for Education Research</b>, Spring 2012, Fall 2012</li>
+                          <li><b>Causal Inference in Economics of Education</b>, Spring 2012</li>
+                          <li><b>Applied Research in Educational Leadership</b>, Fall 2011, Spring 2012</li>
+                        </ul>
+
+                    </div>
+                  </div>
+                </section>
+
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col">
+                      <div class="mdl-card__supporting-text">
+                          <div align="center">
+                            <p><I>"The flowers bloom."</I></p>
+                            <img src="files/wencounty.jpg" width="80%" >
+                            <p>(Shangde School, Wen County, Gansu Province, 2009)</p>
+                          </div>
+                      </div>
+                    </div>
+                  </section>
+              </section>
+            </div>          
+
+        <footer class="mdl-mega-footer">
+          <div class="mdl-mega-footer--bottom-section">
+            <div class="mdl-logo">
+             <align="center">Nothing great is easy. #2019.09#</align> 
+            </div>
+        </footer>
+      </main>
+    </div>
+   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  
 
 </body>
 </html>
