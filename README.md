@@ -1,5 +1,9 @@
 # xiaoyangye.github.io
 
-## This is Xiaoyang Ye's personal website. Thanks for visiting! All the views are mine.
+Thanks for visiting! 
 
-## Aal izz well.
+This is Xiaoyang Ye's personal website. 
+
+All the views are mine.
+
+Aal izz well.
