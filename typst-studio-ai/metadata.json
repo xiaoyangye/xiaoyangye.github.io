@@ -1,0 +1,5 @@
+{
+  "name": "Typst Studio AI",
+  "description": "A simplified, web-based VS Code-like environment for Typst, featuring AI-powered compilation previews.",
+  "requestFramePermissions": []
+}

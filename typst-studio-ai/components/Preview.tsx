@@ -1,0 +1,1 @@
+// This file is deprecated. All logic has been moved to index.html for local file:// execution.
