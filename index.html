@@ -1,731 +1,570 @@
-<!doctype html>
-<!--
-  Material Design Lite
-  Copyright 2015 Google Inc. All rights reserved.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      https://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
--->
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Xiaoyang Ye</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YE AI Studio (Local)</title>
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
-
-    <link rel="shortcut icon" href="images/ye.png">
-
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css"/>
-    <link rel="stylesheet" href="styles.css">
     <style>
-    #view-source {
-      position: fixed;
-      display: block;
-      right: 0;
-      bottom: 0;
-      margin-right: 40px;
-      margin-bottom: 40px;
-      z-index: 900;
-    }
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: #1e1e1e; }
+      ::-webkit-scrollbar-thumb { background: #424242; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #4f4f4f; }
 
-    ol {
-      display: grid;
-      gap: 10px;
-    }
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #1e1e1e;
+        color: #cccccc;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
 
-    .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-    .title-column {
-      flex: 1;
-      margin-left: 120px;
-    }
-    
-    .portrait-column img {
-      border-radius: 50%;
-      width: 160px;
-      height: 160px;
-      margin-right: 120px;
-      object-fit: cover;
-    }
+      textarea {
+        caret-color: white;
+        scrollbar-gutter: stable;
+      }
+
+      .resizer {
+        width: 4px;
+        cursor: col-resize;
+        background: #1e1e1e;
+        transition: background 0.2s;
+        z-index: 50;
+        flex-shrink: 0;
+      }
+      .resizer:hover,
+      .resizing {
+        background: #007acc !important;
+      }
+
+      .typo-prose {
+        font-family: "Times New Roman", serif;
+      }
+
+      .is-resizing {
+        user-select: none;
+      }
+
+      /* Typst-ish preview basics */
+      .typo-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+      .typo-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 1rem; }
+      .typo-prose p { margin-bottom: 1rem; line-height: 1.6; }
+      .text-center { text-align: center; }
+      .text-right { text-align: right; }
+      .text-left { text-align: left; }
     </style>
-
-  <!-- favicon-->
-
-  <link rel="icon" type="image/png" href="favicon.png" sizes="16x16">
   </head>
 
+  <body>
+    <div id="root"></div>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <script type="text/babel">
+      const { useState, useEffect, useRef, useCallback } = React;
 
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      // --- ICONS ---
+      const IconFiles = ({ size = 20, className = "" }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+          <polyline points="14 2 14 8 20 8"/>
+        </svg>
+      );
+      const IconPlus = ({ size = 14 }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+      );
+      const IconTrash = ({ size = 14 }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+          <line x1="10" y1="11" x2="10" y2="17"/>
+          <line x1="14" y1="11" x2="14" y2="17"/>
+        </svg>
+      );
+      const IconFileText = ({ size = 14, className = "" }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      );
+      const IconPlay = ({ size = 14, className = "" }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+      );
+      const IconDownload = ({ size = 14, className = "" }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      );
+      const IconChevronDown = ({ size = 12 }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      );
 
-<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-   
-  <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-    </div>
+      const TEMPLATES = {
+        Simple: `= Simple Document
 
-  <div class="mdl-layout--large-screen-only mdl-layout__header-row">       
-    <div class="header-container">
-      <!-- Titles Column -->
-      <div class="title-column">
-        <h2>XIAOYANG YE</h2>
-        <h4>Economist, Amazon</h4>
-        <h5>xiaoyang.ye26@gmail.com</h5>
-      </div>
-      <!-- Portrait Column -->
-      <div class="portrait-column">
-        <img src="xiaoyang.jpg" alt="Xiaoyang Ye Portrait">
-      </div>
-    </div>
-  </div>
-  
-  <div class="mdl-layout--small-screen-only mdl-layout__header-row">       
-      <h4>XIAOYANG YE</h4>
-      </div>
+#set text(font: "Linux Libertine", size: 12pt)
+#set page(paper: "a4")
 
-  <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-    </div>
+#align(center)[
+  = Centered Header
+]
 
-  <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-    <a href="#home" class="mdl-layout__tab is-active">home</a> 
-    <a href="#research" class="mdl-layout__tab">research</a>
-    <a href="#teaching" class="mdl-layout__tab">education for all</a>
-    <a href="Ye-CV.pdf"  target="_blank" class="mdl-layout__tab">cv</a>  
-    <a href="#poetry" class="mdl-layout__tab">糅春天</a>
-  </div>
+Hello, this is a basic *Typst* document.
 
-</header>
+#align(center)[
+  This text is centered using the align function.
+]
 
-   <main class="mdl-layout__content">
-    <div class="mdl-layout__tab-panel is-active" id="home">
-         <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-              <div class="mdl-card__supporting-text">
+== Section 1
 
-      <p>Hi there, my name is Xiaoyang Ye (叶晓阳), pronounced "Hsiao-young Yay!"</p> 
-                   
-			<p>I am an economist at <span style="color: #FEBD69">Amazon</span>'s Stores Economics and Science (SEAS) central science team, building the foundational economic models for <i>amazon.com</i> using causal ML and behavioral economics.</p> 
-        
-      <p>I previously worked at PXT Central Science and led the science behind Amazon's major people engagement programs.</p>
-      
-			<p>My academic research (not affiliated with Amazon) focuses on optimizing human decisions from school to the workforce.</p>
+- Unnumbered Item A
+- Unnumbered Item B
 
-      <p>I was a postdoc with Susanna Loeb at Brown and with Adam Kapor, Chris Neilson, and Seth Zimmerman at Princeton.</p>
+1. Numbered Item 1
+2. Numbered Item 2
 
-      <p>I received my Ph.D. under the advising of Steve DesJardins, Sue Dynarski, and Brian Jacob from the University of Michigan.</p>
-      <p>Why do I want to improve human capital accumulation for the poor? One reason: <a href="http://www.boredpanda.com/dangerous-journey-to-school/" style="color:#666666" target="_blank"> <u>"25 dangerous roads to school in the world."</u></a></p>
+$ E = m c^2 $`,
+        Resume: `#set page(margin: (x: 1cm, y: 1cm))
+
+#align(center)[
+  = John Doe
+  john@example.com | +1 234 567 890
+]
+
+== Experience
+*Senior Software Engineer* @ Tech Corp
+1. Led a team of 10 engineers
+2. Improved performance by 40%`,
+        Scientific: `= On the Nature of Things
+
+#align(center)[*Abstract*]
+
+This paper discusses the local browser-based compilation...
+
+== Introduction
+As shown by @smith2023, Typst is a powerful new tool.`
+      };
+
+      const localCompileTypst = (code) => {
+        try {
+          // Remove #set and #let lines entirely (mock behavior)
+          let processed = String(code)
+            .replace(/^#set .*$/gm, "")
+            .replace(/^#let .*$/gm, "");
+
+          // Escape HTML characters early
+          processed = processed
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+
+          const processInner = (text) => {
+            let t = text.trim();
+
+            // Headers (order matters: === before == before =)
+            t = t.replace(/^===\s+(.+)$/gm, '<h3 class="text-xl font-semibold mb-2 mt-4 text-gray-700">$1</h3>');
+            t = t.replace(/^==\s+(.+)$/gm,  '<h2 class="text-2xl font-semibold mb-3 mt-5 text-gray-800">$1</h2>');
+            t = t.replace(/^=\s+(.+)$/gm,   '<h1 class="text-3xl font-bold mb-4 mt-6 pb-2 border-b border-gray-200">$1</h1>');
+
+            // Lists
+            t = t.replace(/^\d+\.\s+(.+)$/gm, "<li>$1</li>");
+            t = t.replace(/^\-\s+(.+)$/gm, "<li>$1</li>");
+
+            // Wrap contiguous <li> blocks into ol/ul
+            // Note: we distinguish by looking at the original markers before replacement is hard,
+            // so we do a simple two-pass approach on the raw text instead.
+            // For this mock, we accept this limitation and wrap consecutive <li> as <ul>.
+            // If you care, keep markers or parse line-by-line.
+            t = t.replace(/(<li>[\s\S]*?<\/li>\n?)+/g, (match) => {
+              // heuristic: if any line in match previously had "1." it is lost; keep as <ul>.
+              return `<ul class="list-disc ml-6 mb-4">${match}</ul>`;
+            });
+
+            // Math (inline, single line)
+            t = t.replace(/\$([^\$\n]+)\$/g, '<span class="italic text-blue-800 bg-blue-50 px-1 rounded">Math($1)</span>');
+
+            // Bold and Italic
+            t = t.replace(/\*([^\*]+)\*/g, "<strong>$1</strong>");
+            t = t.replace(/_([^_]+)_/g, "<em>$1</em>");
+
+            // Paragraph blocks
+            const parts = t.split(/\n\n+/);
+            t = parts
+              .map((p) => {
+                const s = p.trim();
+                if (s.startsWith("<h") || s.startsWith("<ul") || s.startsWith("<ol") || s.startsWith("<div")) return s;
+                return `<p class="mb-4">${s.replace(/\n/g, "<br/>")}</p>`;
+              })
+              .join("");
+
+            return t;
+          };
+
+          // Alignment blocks
+          processed = processed.replace(/#align\((center|left|right)\)\[([\s\S]*?)\]/g, (_, pos, content) => {
+            return `<div class="text-${pos}">${processInner(content)}</div>`;
+          });
+
+          processed = processInner(processed);
+          return { html: `<div class="typo-prose">${processed}</div>` };
+        } catch (e) {
+          return { error: e && e.message ? e.message : String(e) };
+        }
+      };
+
+      const Sidebar = ({ files, activeFileId, onSelectFile, onAddFile, onDeleteFile, width }) => {
+        const [showTemplates, setShowTemplates] = useState(false);
+
+        return (
+          <div style={{ width }} className="bg-[#252526] flex flex-col text-[#cccccc] h-full border-r border-[#1e1e1e] select-none flex-shrink-0">
+            <div className="h-9 px-4 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#bbbbbb]">
+              <span className={width < 80 ? "hidden" : ""}>Explorer</span>
+
+              <div className="relative">
+                <button
+                  className="hover:bg-[#3c3c3c] rounded p-1 flex items-center gap-1 transition-colors"
+                  onClick={() => setShowTemplates(!showTemplates)}
+                  title="New Document"
+                  type="button"
+                >
+                  <IconPlus size={14} />
+                  {width > 120 && <IconChevronDown size={10} />}
+                </button>
+
+                {showTemplates && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setShowTemplates(false)} />
+                    <div className="absolute top-full right-0 mt-1 bg-[#252526] border border-[#3e3e42] shadow-2xl z-50 py-1 w-40 rounded">
+                      <div className="px-3 py-1.5 text-[10px] text-gray-500 font-bold uppercase border-b border-[#3e3e42]">
+                        Select Template
+                      </div>
+
+                      {Object.keys(TEMPLATES).map((t) => (
+                        <button
+                          key={t}
+                          className="w-full text-left px-3 py-2 text-xs hover:bg-[#007acc] transition-colors"
+                          onClick={() => { onAddFile(t); setShowTemplates(false); }}
+                          type="button"
+                        >
+                          {t}
+                        </button>
+                      ))}
+
+                      <button
+                        className="w-full text-left px-3 py-2 text-xs hover:bg-[#007acc] border-t border-[#3e3e42] transition-colors"
+                        onClick={() => { onAddFile("Blank"); setShowTemplates(false); }}
+                        type="button"
+                      >
+                        Blank File
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-          </section>
-    </div>
 
-    <div class="mdl-layout__tab-panel" id="research">
-      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-        <div class="mdl-card mdl-cell mdl-cell--12-col">
-          <div class="mdl-card__supporting-text">
-          <h4 id="current">Optimize human decisions from school to workforce</h4>
-
-          <ul class="toc">
-            <a href="#paper1">Working papers</a>
-            <a href="#paper2">Publications</a>
-            <a href="#paper3">Publications in Chinese</a>
-          </ul>
-
-<h5 id="paper1">Working papers</h5>
-
-<ol>
-<li>Parents' earnings and the returns to universal pre-Kindergarten, with John Eric Humphries, Christopher Neilson, Seth Zimmerman, NBER Working Paper 33038, 2025  <a href="https://tobin.yale.edu/sites/default/files/2024-10/Parents%27%20Earnings%20and%20the%20Returns%20to%20Universal%20Pre-Kindergarten_October%202024.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li> 
-<li>Option value neglect: Evidence from centralized college admission, with Ao Wang, Shaoda Wang, NBER Working Paper 33704, 2025 <a href="http://www.sdwang.org/uploads/4/4/8/5/44856715/wang_coladm_submission__2_.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>The sources of researcher variation in economics, with Nick Hungtington-Klein & many economists, NBER Working Paper 33729, 2025 <a href="https://www.nber.org/papers/w33729" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>The STEM major gender gap: Evidence from coordinated college application platforms across five continents, with Isaac Ahimbisibwe, Adam Altjmed, Georgy Artemov, Andres Barrios-Fernandez, Aspasia Bizopoulou, Martti Kaila, Jin-Tan Liu, Rigissa Megalokonomou, Jose Montalban, Christopher Neilson Jintao Sun, Sebastian Otero, 2024 <a href="https://iahimbis.github.io/files/stem_gap_multicountry.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>China "World Class University" label and student's admission outcomes, with Runjiu Liu (JMP), 2024 <a href="https://drive.google.com/file/d/1srtARs4mtXeuxuGVWGwvgDh4wetlvXj0/view" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>The impact of online learning on human capital investment and attainment: Evidence from a large community college system, with Di Xu, Daniel Firoozi, 2024</li>
-<li>The option value of late specialization: Evidence from the meta-major reform in China's college education, with Le Kang, Di Wang, Xu Wei, Yi Zhou, 2024 <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4851491" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Personalized advising for college match: Experimental evidence on the use of human expertise and machine learning to improve college choice, 2022 <a href="papers/Ye-ML.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Intergenerational mobility effects of regional education and migration policy in China, with Jonas Jin, Alan Yang, 2022 <a href="https://drive.google.com/file/d/1OA3jSWVnZQ0ddquQYaoSMw6hZb2__1Uz/view" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>New college campus and local economic growth, with Dongyang Chen, Wei Ha, 2022</li>
-<li>The road not taken: Unequal pathways through high school mathematics coursetaking, with Susanna Loeb, 2022</li>
-<li>How college choices disadvantage disadvantaged students under centralized college admissions systems? with Prashant Loyalka, Binzhen Wu, 2020</li>
-<li>Motivate future doctors: Evidence from a large-scale online experiment in China, with Hongbin Wu, Hang Yu et al., under review <a href="https://drive.google.com/file/d/1rM3nG6Y0sHe8YxDBkfyykAw1Fw8_q9rH/view" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Using text-messages to overcome parenting barriers in under-resourced communities: Evidence from a field experiment in rural China, with Yue Ma, Susanna Loeb et al., under review</li>
-<li>Information for vision: Expeirmental Evidence on nudging low-income students to wear eyeglasses, with Jiusheng Zhu, Xinjie Zhang, Yu Zhao, under review</li>
-<li>Information nudge in U.S. health education, with Muxin Zhai, Li Feng, under review</li>
-<li>Positive and negative information shock in major choice, with Qiuxiang Wu, Jiawen Ke, under review</li>
-<li>Improving access to high-quality teachers in underdeveloped areas: Evidence from Free Teacher Education in China, with Muxin Zhai, Li Feng, revise & resubmit</li>
-<li>College-major choice to college-then-major choice: The heterogeneous impacts of late specification reforms on college student composition, with Xin Li et al., EdWorkingPaper 22-695, revise & resubmit <a href="https://edworkingpapers.com/index.php/ai22-695" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Experimental evidence on the effects of systematic phonics, with Xinjie Zhang, revise & resubmit</li>
-<li>Peer effects on college choice: Evidence from Affirmative Action in China, with Mengying Peng, revise & resubmit</li>
-</ol>
-
-
-<h5 id="paper2">Publications</h5>
-                
-<ol>
-<li>The demand for data analytical skills by gender: Evidence from a field experiment, with Xiangrui Zheng, Menghan Sheng, Tong Wang, <b>Economics of Education Review</b>, 2025 <a href="https://www.sciencedirect.com/science/article/abs/pii/S027277572500041X"  style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-EER-data.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Improving college choice in centralized admissions: Experimental evidence on the importance of precise predictions, <b>Education Finance and Policy</b>, 2024 <a href="https://direct.mit.edu/edfp/article-abstract/19/2/308/114487/Improving-College-Choice-in-Centralized-Admissions?redirectedFrom=fulltext" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-EFP.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Migrant children's take‐up of social health insurance: Experimental evidence from China, <b>Journal of Policy Analysis and Management</b>, with Menghan Shen, Zhiwei Tang, Xiaoxia Liang, 2024 <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/pam.22585" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-JPAM.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Do teachers colleges prepare more effective teachers? Evidence from a top school district in China, <b>China Economic Review</b>, with Qi Zheng, Xin Xie, Yi Wei, 2024 <a href="https://www.sciencedirect.com/science/article/abs/pii/S1043951X24001147" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-CER.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Recruiting high-quality teachers with service scholarships: Descriptive evidence from China's Free Teacher Education Scholarship, <b>ECNU Review of Education</b>, with Yan Shi, Qi Zheng, Xinliang Zhang, Xin Xie, 2024 <a href="papers/Ye-ECNU-2.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>How does developmental advising impact college students? <b>Studies in Higher Education</b>, with Yuchen Yang, Xuanxuan Ma, Hongbin Wu, 2024 <a href="https://www.tandfonline.com/doi/abs/10.1080/03075079.2024.2326059" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-SHE.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>When information conflicts with obligations: The role of motivated cognition, with Ao Wang, Shaoda Wang, <b>The Economic Journal</b>, NBER Working Paper 30581, 2023 <a href="https://academic.oup.com/ej/article-abstract/133/654/2533/7175372" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-EJ.pdf" style="color:#87CEFA" target="_blank">[pdf]</a>
-<li>College-major choice to college-then-major choice: Experimental evidence from Chinese college admissions reforms, with Liping Ma, Xin Li, Qiong Zhu, <b>Economics of Education Review</b>, EdWorkingPaper 22-694, 2023 <a href="https://www.sciencedirect.com/science/article/abs/pii/S0272775723000274" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-EER-major" style="color:#87CEFA" target="_blank">[pdf]</a>
-<li>Impacts of village preschools on student enrollment and longer-term outcomes, <b>International Journal of Educational Development</b>, with Shuangye Chen, Yanlin Liu, Jin Yang, Yuchen Yang, 2023 <a href="https://www.sciencedirect.com/science/article/abs/pii/S0738059323001281" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-IJED.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li> 
-<li>How college-student academic undermatch affects students: Quasi-experimental evidence on multifaceted student outcomes, <b>Social Science Research</b>, with Xin Li, Xiaogang Wu, 2023 <a href="https://www.sciencedirect.com/science/article/abs/pii/S0049089X23000510" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-SSR.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>The effect of an information intervention on the career commitment of medical students: Evidence from a randomized experiment, <b>Frontiers in Medicine</b>, with Chunqing Li, Chen Yu, Hongbin Wu, 2023 <a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2023.1101993/full" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-FIM.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Still want to be a doctor? Medical student dropout in the era of COVID-19, with Muxin Zhai, Li Feng, A'na Xie, Weiming Wang, Hongbin Wu, <b>Journal of Economic Behavior & Organization</b>, 2022 <a href="https://www.sciencedirect.com/science/article/pii/S016726812100545X" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-JEBO.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>More money on learning, less learning loss? <b>The Learning Curve at Urban Institute</b> (internally reviewed), 2022 <a href="https://www.urban.org/research/publication/more-money-learning-less-learning-loss-variations-how-rhode-island-districts" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-UI.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Global pathways: New evidence on the international graduate school choice of Chinese outbound students, with Suhong Yang, Dean He, <b>Higher Education</b>, 2022 <a href="https://link.springer.com/article/10.1007/s10734-022-00979-6" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-HE-global.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Prosocial modeling matters, <b>Annals of Medicine</b> (authorship not randomized), with Dan Wang, Hongbin Wu, 2022 <a href="https://www.tandfonline.com/doi/full/10.1080/07853890.2022.2139410" style="color:#87CEFA" target="_blank">[link]</a>  <a href="papers/Ye-AOM.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Centralization vs. decentralization: The financing of public primary education in China, with Wei Ha, Dongyang Chen, <b>Recent Advancements in Education Finance and Policy</b> (eds. Thomas Downes, Kieran
-Killeen), 2022 <a href="https://www.google.ca/books/edition/Recent_Advancements_in_Education_Finance/RI-cEAAAQBAJ?hl=en&gbpv=0" style="color:#87CEFA" target="_blank">[link]</a>  <a href="papers/Ye-EFP-chapter.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li> 
-<li>Heterogeneous major preferences for extrinsic incentives: The effects of wage information on the gender gap in STEM major choice, with Yanqing Ding, Wei Li, Xin Li,Yinduo Wu, Jin Yang, <b>Research in Higher Education</b>, EdWorkingPaper 21-395, 2021 <a href="https://link.springer.com/article/10.1007/s11162-021-09636-w" style="color:#87CEFA" target="_blank">[link]</a>  <a href="papers/Ye-RIHE.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>The elite exclusion: Stratified access and production during the Chinese higher education expansion, with Yanqing Ding, Yinduo Wu, Jin Yang, <b>Higher Education</b>, 2021 <a href="https://link.springer.com/article/10.1007/s10734-021-00682-y" style="color:#87CEFA" target="_blank">[link]</a>  <a href="papers/Ye-HE-expansion.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Expanding online education for future doctors on a national scale, with Li Li, Hongbin Wu, A'na Xie, Cheng Liu, Weiming Wang, <b>BMC Medical Education</b> (authorship not randomized), 2021 <a href="https://bmcmededuc.biomedcentral.com/articles/10.1186/s12909-021-03005-y" style="color:#87CEFA" target="_blank">[link]</a>  <a href="papers/Ye-BMC.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Traditional dietary habits and interprovincial migration in college choice, with Le Kang, Yanqing Ding, <b>ECNU Review of Education</b>, 2020 <a href="https://journals.sagepub.com/doi/10.1177/2096531119889875" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-ECNU.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-<li>Intergovernmental transfer with heterogeneous accountabilities: The effects of the 2006 Chinese Education Finance Reform, with Yanqing Ding, Fengming Lu, <b>Economics of Educaiton Review</b>, 2020 <a href="https://www.sciencedirect.com/science/article/abs/pii/S0272775718307635" style="color:#87CEFA" target="_blank">[link]</a> <a href="papers/Ye-EER.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-</ol>
-
-
-<h5 id="paper3">Publications in Chinese</h5>
-
-<ol>
-
-<li>Information RCT on college major choice, with Qiuxiang Wu, Boyang Li, Exploring Education Development 教育发展研究, 2024.</li>
-
-<li>Impacts of Early Childhood Education Policy on Fertility, with Li Huang, Ling Li, Exploring Education Development 教育发展研究, 2024.</li>
-
-<li>Mismatch between college-majors and occupations: Results based on Shift-Share IV, with Suhong Yang, Peking University Education Review 北京大学教育评论, 2023.</li>
-
-<li>Students' academic performance of publicly-funded pre-service teacher programs, with Xinliang Zhang, Yan Shi, Qi Zheng, Na Wang, Journal of Educational Studies 教育学报, 2023. <a href="papers/chinese/2023-a.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Health insurance RCT with college students, with Menghan Shen, Xiangrui Zheng., Insurance Studies 保险研究, 2022. <a href="papers/chinese/2022-b.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-	
-<li>Medical school advising, with Yuchen Yang et al., Chinese Journal of Medical Education 中华医学教育杂志, 2022.</li>
-	
-<li>STEM major restrictions, with Shangcong Bu, Liping Ma, China Higher Education Research 中国高教研究, 2022. <a href="papers/chinese/2022-a.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>COVID and medical student attrition, with Xuanxuan Ma et al., Fudan Education Forum 复旦教育论坛, 2021. <a href="papers/chinese/2021-e.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-	
-<li>Impacts of academic mismatch on college success, with Qiongqiong Wang et al., China Economics of Education Review 教育经济评论, 2021. <a href="papers/chinese/2021-d.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-	
-<li>College and economic development: Evidence from new college campuses, with Wei Ha, Dongyang Chen, Peking University Education Review 北京大学教育评论, 2021. <a href="papers/chinese/2021-c.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-	
-<li>The impact of informational interventions on college-major choice: Evidence from a large-scale randomized experiment, with Lizhen Du et al., China Economic Quarterly 经济学季刊, 2021. <a href="papers/chinese/2021-b.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-	
-<li>The impacts of college admissions reforms,'' with Liping Ma et al., China Higher Education Research 中国高教研究, 2021. <a href="papers/chinese/2021-a.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Retaking college entrance exam: Evidence from a regression discontinuity design, with Yan Zhang et al., Global Education 全球教育展望, 2019. <a href="papers/chinese/2019-c.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Who benefits from college expansion in China? Part 2, with Yanqing Ding, Yinduo Wu, Jin Yang, Journal of National Academy of Education Administration 国家教育行政学院学报, 2019. <a href="papers/chinese/2019-b.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Who benefits from college expansion in China? Part 1, with Yanqing Ding, Yinduo Wu, Jin Yang, Exploring Education Development 教育发展研究, 2019. <a href="papers/chinese/2019-a.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Undermatched college choice among low-income students, with Si Chen et al., China Economics of Education Review 教育经济评论, 2018. <a href="papers/chinese/2018.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Gaokao and education investment: Public high school performance pay under accountability, with Yinduo Wu, Jin Yang, Education & Economy 教育与经济, 2017. <a href="papers/chinese/2017.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Why have some local governments closed more rural schools than others?, with Yanqing Ding, Shaoda Wang, China Economics of Education Review 教育经济评论, 2016. lead article <a href="papers/chinese/2016.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Expanding Chinese higher education: Quality and social stratification, with Yanqing Ding, Chinese Journal of Sociology 社会, 2015. <a href="papers/chinese/2015.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>The causal effects of high school choice, with Jinling Chen, Yanqing Ding, Education Research Monthly Review 教育学术月刊, 2014. <a href="papers/chinese/2014.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Local government incentives, fiscal constraint and education expenditure, in Lin et al. (eds) Tax Reform and Sustainable Development in China 中国税制改革与可持续发展, China Finance & Economics Press, 2013.  </li>
-
-<li>Parental political capital and children’s school choice: Evidence from China, World Economics Papers 世界经济文汇, 2012. <a href="papers/chinese/2012.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>
-
-<li>Village schools: A symbol of the nation or deformation of the city?, RUC Education Journal 中国人民大学教育学刊, 2011. <a href="papers/chinese/2011.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></li>	
-</ol>
-         
-          </div> 
-        </div>
-      </section>
-</div>
-
-<div class="mdl-layout__tab-panel" id="teaching">
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-      <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__supporting-text">
-
-     <h4 id="current">Spread science to help people change the world</h4>
-
-      <ul class="toc">
-        <a href="#teaching1">Causal Machine Learning Series</a>
-        <a href="#teaching2">RCT for Social Good Series</a>
-        <a href="#teaching3">Improving College Choice for All Series</a>
-      </ul>
-
-		<h4 id="teaching1"><span style="color: #3498DB">Causal Machine Learning</span> Series</h4>
-
-    <h6>> <b>Causal Machine Learning References</b> <a href="teaching/cml-references.pdf" style="color:#87CEFA" target="_blank">[pdf]</a></h6>
-
-    <ul>
-      <li>This is a list of key methodological textbooks and papers on causal machine learning.</li>
-      <li>The current version includes four sections:</li>
-        <ol>
-          <li>Causal Inference</li>
-          <li>Machine Learning</li>
-          <li>Causal Machine Learning</li>
-          <li>Coding</li>
-        </ol>
-      <li>Updated: 12.31.2024</li>
-    </ul>
-
-      <h6>> 2022 - <b>"Causal Inference Checklist"</b></h6>
-      
-        <ul>
-          <li>hosted by Education Economics Lab of ECNU</li>
-        </ul>
-
-        <div align="center" class="row">
-          <div class="column">
-            <img src="teaching/CIC-1.jpeg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/CIC-2.jpeg" style="width:80%">
-          </div>
-        </div>
-
-        <h6>> 2022/2023 New Year Talk - <b>"Causal Inference: The Angrist Style"</b></h6>
-             
-        <div align="center" class="row">
-          <div class="column">
-            <img src="teaching/CIC-22-23-0.jpg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/CIC-22-23-1.jpg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/CIC-22-23-2.jpg" style="width:80%">
-          </div>
-        </div>
-
-        <h6>> 2023/2024 New Year Talk - <b>"Causal Machine Learning: An Introduction"</b></h6>        
-
-        <div align="center" class="row">
-          <div class="column">
-            <img src="teaching/cml-1.jpg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/cml-2.jpg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/cml-3.jpg" style="width:80%">
-          </div>
-        </div>
-
-        <h6>> 2024/2025 New Year Talk - <b>"Causal Machine Learning: References and New Book Release"</b></h6>
-
-        <div align="center" class="row">
-          <div class="column">
-            <img src="teaching/cml-24-1.jpg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/cml-24-2.jpg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/cml-24-3.jpg" style="width:80%">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-      <div class="mdl-card__supporting-text">
-                      
-    <h4 id="teaching2"><span style="color: #F1C40F">RCT for Social Good</span> Series</h4>
-    
-      <h6>> 2022 - <b>"Behavioral Economics in Early Childhood Education"</b></h6>
-
-        <ul>
-          <li>hosted by Center for Education Policy of SWU</li>
-        </ul>
-
-        <div align="center" class="row">
-          <div class="column">
-            <img src="teaching/RCT-1.jpg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/RCT-2.jpg" style="width:80%">
-          </div>
-        </div>
-
-      <h6>> 2023 - <b>"Behavioral Economics in Education Finance"</b></h6>
-
-      <ul>
-        <li>hosted by China Institute for Educational Finance Research</li>
-      </ul>
-
-      <div align="center" class="row">
-        <div class="column">
-          <img src="teaching/BE-1.jpg" style="width:80%">
-        </div>
-        <div class="column">
-          <img src="teaching/BE-2.jpg" style="width:80%">
-        </div>
-        <div class="column">
-          <img src="teaching/BE-3.jpg" style="width:80%">
-        </div>
-      </div>
-
-      <h6>> 2024 - <b>"Humans vs. Algorithms"</b></h6>
-
-      <ul>
-        <li>hosted by China Institute for Educational Finance Research</li>
-      </ul>     
-
-      <div align="center" class="row">
-        <div class="column">
-          <img src="teaching/algo-1.jpg" style="width:80%">
-        </div>
-        <div class="column">
-          <img src="teaching/algo-2.jpg" style="width:80%">
-        </div>
-        <div class="column">
-          <img src="teaching/algo-3.jpg" style="width:80%">
-        </div>
-        <div class="column">
-          <img src="teaching/algo-4.jpg" style="width:80%">
-        </div>
-        <div class="column">
-          <img src="teaching/algo-5.jpg" style="width:80%">
-        </div>              
-      </div>
-
-      </div>
-    </div>
-  </section> 
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-      <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__supporting-text">
-
-		<h4 id="teaching3"><span style="color: #E74C3C">Improving College Choice for All</span> Series</h4>
-
-      <h6>> 2022 - Gaokao Checklist</h6>
-
-        <div align="center" class="row">
-          <div class="column">
-            <img src="teaching/GK-1.jpg" style="width:80%">
-          </div>
-          <div class="column">
-            <img src="teaching/GK-2.jpg" style="width:80%">
-          </div>
-        </div>
-
-        <ul>
-            <li><b>The seeds of life's confusion were planted before the College Entrance Exam</b> - Apple Podcast by ETW Studio <a href="https://podcasts.apple.com/ch/podcast/230-%E5%B7%A5%E4%BD%9C%E5%90%8E%E7%9A%84%E8%BF%B7%E8%8C%AB-%E5%9C%A8%E9%AB%98%E8%80%83%E5%89%8D%E5%B0%B1%E5%9F%8B%E4%B8%8B%E4%BA%86%E7%A7%8D%E5%AD%90/id1183662640?i=1000580280058&l=en" style="color:#87CEFA" target="_blank">[link]</a></li>
-            <li><b>After 7 years of college advising, he said "it's hard to change students' behaviors"</b> - Southern Weekend <a href="https://www.toutiao.com/article/7129876367839068687/" style="color:#87CEFA" target="_blank">[link]</a></li>
-            <li><b>How does college application change a student's life?</b> - People Magazine <a href="https://zhuanlan.zhihu.com/p/532630694" style="color:#87CEFA" target="_blank">[link]</a></li>
-          </ul>
-
-      <h6>> 2023 - Gaokao Checklist</h6>
-
-      <ul>
-        <li><b>Providing free guidance on college application choices for 8 years, he shared four charts.</b> - Southern Weekend <a href="https://news.qq.com/rain/a/20230629A00BJ400?no-redirect=1" style="color:#87CEFA" target="_blank">[link]</a></li>
-        <li><b>The Opposite of Idealism</b> - People Magazine <a href="https://zhuanlan.zhihu.com/p/642546046" style="color:#87CEFA" target="_blank">[link]</a></li>
-      </ul>
-
-      <h6>> 2024 - Gaokao Checklist</h6>      
-
-      <ul>
-        <li><b>Why do students always make mistakes in college choice?</b> - Apple Podcast by Aunt Bear <a href="https://podcasts.apple.com/us/podcast/7-%E7%BB%8F%E6%B5%8E%E5%AD%A6%E8%80%85%E5%8F%B6%E6%99%93%E9%98%B3-%E4%BA%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A1%AB%E9%AB%98%E8%80%83%E5%BF%97%E6%84%BF%E6%97%B6%E6%80%BB%E7%8A%AF%E9%94%99/id1714921073?i=1000660473985&l=zh-Hant-TW" style="color:#87CEFA" target="_blank">[link]</a></li>
-        <li><b>"We will all have bright future." An education experiment by a group of faculty and students from Peking University</b> - Southern Weekend <a href="https://news.qq.com/rain/a/20241114A08GAC00" style="color:#87CEFA" target="_blank">[link]</a></li>
-        <li><b>Using AI to run hundreds of millions of calculations to study 18 years of college application preferences, he says: "Creating a good application ultimately depends on the students themselves."</b> - The Bund Education <a href="https://news.qq.com/rain/a/20241114A08GAC00" style="color:#87CEFA" target="_blank">[link]</a></li>
-        <li><b>An economist and his experiments in education</b> - Podcast by Vulnerable World <a href="https://vulnerableworld.typlog.io/episodes/yong-aiyu-zheng-ju-da-bai-zhang-xue-feng-yi-wei-6e1d525e" style="color:#87CEFA" target="_blank">[link]</a></li>
-      </ul>
-
-
-  </div>
-</div>
-</section>
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-      <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__supporting-text">
-                      
-		<h4>Older Lectures</h4>
-
-      <ul>
-        <li><b><a href="teaching/Ye_survey_rct.pdf" style="color:#87CEFA" target="_blank">Survey Experiment</a></b></li>
-        <li><b><a href="teaching/Ye_did.pdf" style="color:#87CEFA" target="_blank">Difference-in-Differences</a></b></li>
-        <li><b><a href="teaching/Ye_rd.pdf" style="color:#87CEFA" target="_blank">Regression Discontinuity</a></b>
-        </ul>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-      <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__supporting-text">
-            <div align="center">
-              <p><I>"The flowers bloom."</I></p>
-              <img src="teaching/wencounty.jpg" width="80%" >
-              <p>(Shangde School, Wen County, Gansu Province, 2009)</p>
+            <div className="flex-1 overflow-y-auto mt-2">
+              {files.map((file) => (
+                <div
+                  key={file.id}
+                  className={`group flex items-center px-4 py-1.5 cursor-pointer text-sm ${
+                    activeFileId === file.id ? "bg-[#37373d] text-white" : "hover:bg-[#2a2d2e]"
+                  }`}
+                  onClick={() => onSelectFile(file.id)}
+                >
+                  <IconFileText size={14} className="mr-2 text-[#42a5f5] flex-shrink-0" />
+                  <span className={`truncate flex-1 ${width < 50 ? "hidden" : ""}`}>{file.name}</span>
+
+                  {files.length > 1 && width > 120 && (
+                    <button
+                      className="ml-2 opacity-0 group-hover:opacity-100 hover:text-red-400 p-1 rounded transition-opacity"
+                      onClick={(e) => { e.stopPropagation(); onDeleteFile(file.id); }}
+                      title="Delete file"
+                      type="button"
+                    >
+                      <IconTrash size={12} />
+                    </button>
+                  )}
+                </div>
+              ))}
             </div>
-        </div>
-      </div>
-    </section>
-</div>                 
-
-<div class="mdl-layout__tab-panel" id="poetry">     
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-    <div class="mdl-card__supporting-text">
-      <h4><b>Six Years in My Life</b></h4>
-
-        <div align="left">
-          <p>Three books, five mentors, and 1,000,000 poor students guided my Ph.D. studies on #CollegeChoice, #BehavioralInsights, #CollegeAccess, #EconomicsOfEducation, #StudentSuccess, #Poverty, #EducationOpportunity, #DecisionMaking, #Inequality. </p>
-        </div>
-        
-        <div align="center">
-          <img src="years/3books.jpeg" width="80%" >
-        </div>
-      </div>
-
-      <div class="mdl-card__supporting-text">
-        <div align="center">
-          <img src="years/defense.jpeg" width="80%" >
-        </div>
-    </div>
-
-    <div class="mdl-card__supporting-text">
-      <div align="center">
-        <img src="years/ningde.jpeg" width="81.5%" >
-      </div>
-     </div>   
-      
-    </div>
-  </section>
-
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-    <div class="mdl-card__supporting-text">
-      <h4>2020 - Year 1 After Graduate School</h4>
-
-<div class="mdl-card__supporting-text">
-          <div align="center">
-            <img src="years/2020-1.jpg" width="81.5%" >
           </div>
-      </div>  
+        );
+      };
 
-        <div class="mdl-card__supporting-text">
-          <div align="center">
-            <img src="years/2020-2.jpg" width="81.5%" >
-          </div>
-      </div>  
+      const Editor = ({ file, onUpdateContent }) => {
+        const [lineCount, setLineCount] = useState(1);
 
-        <div class="mdl-card__supporting-text">
-          <div align="center">
-            <img src="years/2020-3.jpg" width="81.5%" >
-          </div>
-      </div>
+        useEffect(() => {
+          if (file) setLineCount(String(file.content || "").split("\n").length);
+        }, [file?.content]);
 
-    </div>
-  </section>
+        const handleScroll = (e) => {
+          const lineNumbers = document.getElementById("line-numbers");
+          if (lineNumbers) lineNumbers.scrollTop = e.target.scrollTop;
+        };
 
- <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-    <div class="mdl-card__supporting-text">
-      <h4>2021 - Year 2 After Graduate School</h4>
-        
-        <div align="center">
-          <img src="years/2021-1.jpg" width="80%" >
-        </div>
-      </div>
+        const handleDownload = () => {
+          if (!file) return;
+          const blob = new Blob([file.content], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = file.name;
+          a.click();
+          URL.revokeObjectURL(url);
+        };
 
-      <div class="mdl-card__supporting-text">
-        <div align="center">
-          <img src="years/2021-2.jpg" width="80%" >
-        </div>
-    </div>
-
-    <div class="mdl-card__supporting-text">
-      <div align="center">
-        <img src="years/2021-3.jpg" width="81.5%" >
-      </div>
-     </div>  
-
-    </div>
-  </section>
-
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-    <div class="mdl-card__supporting-text">
-      <h4>2022 - Year 3 After Graduate School</h4>
-        
-        <div align="center">
-          <img src="years/2022-1.jpg" width="80%" >
-        </div>
-      </div>
-
-      <div class="mdl-card__supporting-text">
-        <div align="center">
-          <img src="years/2022-2.jpg" width="80%" >
-        </div>
-    </div>
-
-    <div class="mdl-card__supporting-text">
-      <div align="center">
-        <img src="years/2022-3.jpg" width="81.5%" >
-      </div>
-     </div>   
-
-    </div>
-  </section>
-
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-    <div class="mdl-card__supporting-text">
-      <h4>2023 - Year 4 After Graduate School</h4>
-        
-        <div align="center">
-          <img src="years/2023-1.jpg" width="80%" >
-        </div>
-      </div>
-
-      <div class="mdl-card__supporting-text">
-        <div align="center">
-          <img src="years/2023-2.jpg" width="80%" >
-        </div>
-    </div>
-
-    <div class="mdl-card__supporting-text">
-      <div align="center">
-        <img src="years/2023-3.jpg" width="81.5%" >
-      </div>
-     </div>   
-
-    </div>
-  </section>
-
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-    <div class="mdl-card__supporting-text">
-      <h4>2024 - Year 5 After Graduate School</h4>
-        
-        <div align="center">
-          <img src="years/2024-1.jpg" width="80%" >
-        </div>
-      </div>
-
-      <div class="mdl-card__supporting-text">
-        <div align="center">
-          <img src="years/2024-2.jpg" width="80%" >
-        </div>
-    </div>
-
-    <div class="mdl-card__supporting-text">
-      <div align="center">
-        <img src="years/2024-3.jpg" width="81.5%" >
-      </div>
-     </div>   
-
-    </div>
-  </section>
-
-  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-    <div class="mdl-card__supporting-text">
-      <h4><b>RCT For Social Good</b> (糅春天) Blog</h4>
-
-	<h5><a href="https://mp.weixin.qq.com/s/BlRXaTMgTpnvV4gcE4c1Ww" target="_blank"">WeChat account: RCT4BETTER</a></h5>
-
-    <ul>
-        <li>Version 1 of the RCT for Social Good Blog at WeChat (RCT4GOOD) has been banned forever since 10/14/2022.</li>
-    </ul>
-
-   <div align="left">
-           <img src="years/wechat-v1.jpg" width="64%" >
-   </div>
-   
-   <h5>Poetry Collections</h5>
-
-    <ul>
-      <li>2021 Julio Hu 纪念胡续冬</li>
-    </ul>
-
-      <div align="center" class="row">
-        <div class="column">
-          <img src="years/poem-2021-1.jpg" style="width:80%">
-        </div>
-        <div class="column">
-          <img src="years/poem-2021-2.jpg" style="width:80%">
-        </div>
-      </div>   
-
-    <ul>
-      <li>2023 New Year Poetry Reading <a href="years/2023-near-year.pdf" style="color:#87CEFA" target="_blank">[pdf]</a>
-    </ul>
-
-      <div align="center" class="row">
-        <div class="column">
-          <img src="years/poem-2023.jpg" style="width:80%">
-        </div>
-      </div>   
-
-  </section>
-
-</div>             
-                 
-                 
-    <footer class="mdl-mega-footer">
-          <div class="mdl-mega-footer--bottom-section">
-            <div class="mdl-logo">
-             <align="center">Nothing gold can stay.</align>
-             <br><align="center">Views expressed on this site are my own. #2025.01#</align>  
+        if (!file) {
+          return (
+            <div className="flex-1 bg-[#1e1e1e] flex items-center justify-center text-[#333] text-6xl font-bold uppercase select-none">
+              Typst
             </div>
-        </footer>
-      </main>
-    </div>
-   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>  
+          );
+        }
 
+        return (
+          <div className="flex-1 flex flex-col bg-[#1e1e1e] h-full overflow-hidden min-w-0">
+            <div className="h-9 bg-[#2d2d2d] flex items-center justify-between px-4 text-xs text-white border-b border-[#1e1e1e]">
+              <div className="flex items-center gap-2">
+                <span className="opacity-40 uppercase">Write Something Great!</span>
+                <span className="font-semibold">{file.name}</span>
+              </div>
+              <button
+                onClick={handleDownload}
+                className="hover:bg-[#3c3c3c] p-1.5 rounded transition-colors"
+                title="Download source code"
+                type="button"
+              >
+                <IconDownload size={14} />
+              </button>
+            </div>
+
+            <div className="flex-1 flex overflow-hidden relative">
+              <div
+                id="line-numbers"
+                className="w-10 bg-[#1e1e1e] text-[#858585] text-right pr-2 pt-4 text-[10px] font-mono select-none overflow-hidden leading-6 border-r border-[#333]"
+              >
+                {Array.from({ length: Math.max(lineCount, 60) }).map((_, i) => (
+                  <div key={i}>{i + 1}</div>
+                ))}
+              </div>
+
+              <textarea
+                className="flex-1 bg-[#1e1e1e] text-[#d4d4d4] p-4 pt-4 outline-none resize-none font-mono text-sm leading-6 whitespace-pre overflow-auto"
+                value={file.content}
+                onChange={(e) => onUpdateContent(file.id, e.target.value)}
+                onScroll={handleScroll}
+                spellCheck={false}
+              />
+            </div>
+          </div>
+        );
+      };
+
+      const Preview = ({ htmlContent, width, isLoading, onRefresh }) => {
+        const handlePrint = () => {
+          if (!htmlContent) return;
+          const win = window.open("", "_blank");
+          if (!win) return;
+
+          win.document.open();
+          win.document.write(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typst Export</title>
+  <script src="https://cdn.tailwindcss.com"><\/script>
+  <style>
+    @page { size: A4; margin: 0; }
+    body { margin: 0; padding: 0; background: white; font-family: "Times New Roman", serif; }
+    .print-area { width: 21cm; padding: 2.5cm; margin: auto; }
+    h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1.5rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    p { margin-bottom: 1rem; line-height: 1.6; }
+    ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+    ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 1rem; }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-left { text-align: left; }
+  </style>
+</head>
+<body>
+  <div class="print-area">${htmlContent}</div>
+  <script>
+    window.onload = () => {
+      setTimeout(() => {
+        window.print();
+        window.close();
+      }, 250);
+    };
+  <\/script>
 </body>
+</html>`);
+          win.document.close();
+        };
+
+        return (
+          <div style={{ width }} className="flex flex-col bg-[#ffffff] h-full overflow-hidden border-l border-[#333] flex-shrink-0">
+            <div className="h-9 bg-[#2d2d2d] flex items-center justify-between px-4 text-xs text-white border-b border-[#1e1e1e]">
+              <span className="font-bold opacity-60">PREVIEW</span>
+              <div className="flex gap-2">
+                <button
+                  onClick={handlePrint}
+                  className="bg-[#3c3c3c] hover:bg-[#505050] px-3 py-1 rounded text-xs flex items-center transition-colors"
+                  disabled={!htmlContent}
+                  type="button"
+                >
+                  <IconDownload size={12} className="mr-1" /> PDF
+                </button>
+                <button
+                  onClick={onRefresh}
+                  className="bg-[#0e639c] hover:bg-[#1177bb] px-3 py-1 rounded text-xs flex items-center transition-colors"
+                  type="button"
+                >
+                  {isLoading ? "..." : <IconPlay size={10} className="mr-1" />} Render
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-auto bg-[#3e3e42] p-4">
+              <div className="bg-white shadow-xl min-h-[29.7cm] w-full max-w-[21cm] mx-auto p-12 typo-prose text-black">
+                {htmlContent ? (
+                  <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                ) : (
+                  !isLoading && (
+                    <div className="text-gray-400 text-center mt-32 text-xl font-bold uppercase opacity-20 select-none">
+                      Ready to Render
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      const App = () => {
+        const [files, setFiles] = useState([{ id: "1", name: "main.typ", content: TEMPLATES.Simple }]);
+        const [activeFileId, setActiveFileId] = useState("1");
+        const [sidebarWidth, setSidebarWidth] = useState(240);
+        const [previewWidth, setPreviewWidth] = useState(500);
+        const [previewHtml, setPreviewHtml] = useState("");
+        const [loading, setLoading] = useState(false);
+        const [resizing, setResizing] = useState(null);
+
+        const activeFile = files.find((f) => f.id === activeFileId);
+
+        const handleCompile = useCallback(() => {
+          if (!activeFile) return;
+          setLoading(true);
+
+          setTimeout(() => {
+            const res = localCompileTypst(activeFile.content);
+            if (res && res.error) {
+              setPreviewHtml(`<div class="typo-prose"><p class="text-red-600"><strong>Compile error:</strong> ${res.error}</p></div>`);
+            } else {
+              setPreviewHtml(res.html || "");
+            }
+            setLoading(false);
+          }, 200);
+        }, [activeFile]);
+
+        useEffect(() => { handleCompile(); }, [activeFileId, handleCompile]);
+
+        const handleMouseMove = useCallback((e) => {
+          if (resizing === "sidebar") {
+            setSidebarWidth(Math.max(40, Math.min(e.clientX - 48, 450)));
+          } else if (resizing === "preview") {
+            setPreviewWidth(Math.max(200, Math.min(window.innerWidth - e.clientX, window.innerWidth - sidebarWidth - 100)));
+          }
+        }, [resizing, sidebarWidth]);
+
+        const handleMouseUp = useCallback(() => setResizing(null), []);
+
+        useEffect(() => {
+          if (resizing) {
+            window.addEventListener("mousemove", handleMouseMove);
+            window.addEventListener("mouseup", handleMouseUp);
+            document.body.classList.add("is-resizing");
+          }
+          return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener("mouseup", handleMouseUp);
+            document.body.classList.remove("is-resizing");
+          };
+        }, [resizing, handleMouseMove, handleMouseUp]);
+
+        const deleteFile = (id) => {
+          if (files.length <= 1) return;
+          const newFiles = files.filter((f) => f.id !== id);
+          setFiles(newFiles);
+          if (activeFileId === id) setActiveFileId(newFiles[0].id);
+        };
+
+        const addFile = (templateKey) => {
+          const id = Date.now().toString();
+          const content = templateKey === "Blank" ? "= Untitled\n\nStart typing..." : (TEMPLATES[templateKey] || "");
+          const newFile = { id, name: `doc-${files.length + 1}.typ`, content };
+          setFiles([...files, newFile]);
+          setActiveFileId(id);
+        };
+
+        return (
+          <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#1e1e1e]">
+            <div className="flex-1 flex overflow-hidden">
+              <div className="w-12 bg-[#333333] flex flex-col items-center py-4 gap-6 text-[#858585] flex-shrink-0">
+                <IconFiles className="text-white" />
+              </div>
+
+              <Sidebar
+                files={files}
+                activeFileId={activeFileId}
+                onSelectFile={setActiveFileId}
+                onAddFile={addFile}
+                onDeleteFile={deleteFile}
+                width={sidebarWidth}
+              />
+
+              <div className={`resizer ${resizing === "sidebar" ? "resizing" : ""}`} onMouseDown={() => setResizing("sidebar")} />
+
+              <Editor
+                file={activeFile}
+                onUpdateContent={(id, content) => setFiles((prev) => prev.map((f) => (f.id === id ? { ...f, content } : f)))}
+              />
+
+              <div className={`resizer ${resizing === "preview" ? "resizing" : ""}`} onMouseDown={() => setResizing("preview")} />
+
+              <Preview htmlContent={previewHtml} width={previewWidth} isLoading={loading} onRefresh={handleCompile} />
+            </div>
+
+            <div className="h-6 bg-[#007acc] text-white flex items-center justify-between px-3 text-[10px] uppercase font-bold select-none flex-shrink-0">
+              <div className="flex gap-4">
+                <span>Status: Online</span>
+              </div>
+              <span className="opacity-70">YE AI Studio</span>
+            </div>
+          </div>
+        );
+      };
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
 </html>
