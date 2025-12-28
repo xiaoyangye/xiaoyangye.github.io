@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>友松实验室 | 自适应实验（Adaptive Experiment）</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.6; color: #2d3748; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f0f4f8; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #2c5282; font-size: 2.2em; margin-bottom: 10px; }
+        .author-info { color: #718096; font-size: 1.1em; }
+
+        .section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        h2 { color: #2b6cb0; border-left: 5px solid #2b6cb0; padding-left: 15px; margin-top: 0; margin-bottom: 20px; }
+        
+        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .intro-card { background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .highlight { color: #3182ce; font-weight: bold; }
+
+        .guideline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        .guideline-item { background: #f0fff4; padding: 15px; border-radius: 8px; border: 1px solid #c6f6d5; font-size: 0.9em; }
+        .guideline-item strong { color: #2f855a; display: block; margin-bottom: 5px; }
+
+        .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; background: #ebf4ff; padding: 25px; border-radius: 10px; }
+        .control-group { display: flex; flex-direction: column; }
+        label { font-weight: 600; margin-bottom: 10px; font-size: 0.9em; }
+        
+        .stats { display: flex; justify-content: space-around; background: #2d3748; color: white; padding: 20px; border-radius: 10px; margin: 25px 0; }
+        .stat-box { text-align: center; }
+        .stat-box span { display: block; font-size: 1.8em; font-weight: bold; color: #63b3ed; }
+
+        .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .chart-container { background: white; padding: 15px; border: 1px solid #e2e8f0; border-radius: 8px; height: 380px; }
+        
+        /* 技术说明样式 */
+        .tech-note { background: #2d3748; color: #edf2f7; padding: 30px; border-radius: 12px; margin-top: 25px; }
+        .tech-note h3 { color: #63b3ed; margin-top: 0; }
+        .tech-note code { background: #4a5568; padding: 2px 5px; border-radius: 4px; color: #fff; }
+
+        .reference { font-size: 0.85em; color: #718096; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center; }
+        button { background: #3182ce; color: white; border: none; padding: 12px 30px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1em; transition: 0.3s; width: 100%; }
+        button:hover { background: #2b6cb0; box-shadow: 0 2px 8px rgba(49,130,206,0.4); }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>友松实验室 | 自适应实验（Adaptive Experiment）</h1>
+        <div class="author-info">叶晓阳 @ Yu Soong Lab &nbsp; | &nbsp; 2025.12.28</div>
+    </div>
+
+    <div class="section">
+        <h2>什么是自适应实验？</h2>
+        <p>自适应实验通过实时数据反馈，动态调整实验样本的分配比例。其核心目标是优化实验过程中的整体收益，解决传统实验在较差方案上过度消耗资源的问题。</p>
+        <div class="intro-grid">
+            <div class="intro-card">
+                <h3>探索与利用 (Exploration vs Exploitation)</h3>
+                <p>实验必须在“学习每个方案的价值”和“利用当前已知最好的方案”之间寻找最优平衡。</p>
+            </div>
+            <div class="intro-card">
+                <h3>最小化遗憾 (Minimizing Regret)</h3>
+                <p>自适应实验通过快速识别高表现组并增加其流量分配，来降低因选择次优方案而产生的损失（即累积遗憾）。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>操作指南：如何调整参数？</h2>
+        <div class="guideline-grid">
+            <div class="guideline-item">
+                <strong>增加“领先幅度” (Effect Size)</strong>
+                算法会更早识别出冠军。图1中的最优组概率极速上升，且图2中自适应实验节省的遗憾值（Regret）差距拉大 。
+            </div>
+            <div class="guideline-item">
+                <strong>增加“干扰噪声” (Variance)</strong>
+                学习变得困难。算法会保持较长时间的“探索”。图1中的概率曲线交织更久，图4中的置信区间会显著变宽。
+            </div>
+            <div class="guideline-item">
+                <strong>增加“总样本量” (Batch x Rounds)</strong>
+                数据越充足，识别出冠军越快。静态实验的浪费就越线性增加，图2中虚线与实线的鸿沟越来越深。
+            </div>
+            <div class="guideline-item">
+                <strong>增加“轮数” (Rounds)</strong>
+                意味着更频繁的“课程修正”。在相同总样本下，更多的轮数通常能让分配比例演变（图1）表现得更加细腻。
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>模拟实验</h2>
+        <div class="controls">
+            <div class="control-group">
+                <label>每轮样本数: <span id="val-batch">20</span></label>
+                <input type="range" id="param-batch" min="10" max="100" step="10" value="20" oninput="updateParamDisplay()">
+            </div>
+            <div class="control-group">
+                <label>实验总轮数: <span id="val-rounds">10</span></label>
+                <input type="range" id="param-rounds" min="5" max="30" step="1" value="10" oninput="updateParamDisplay()">
+            </div>
+            <div class="control-group">
+                <label>最优方案领先幅度: <span id="val-effect">0.8</span></label>
+                <input type="range" id="param-effect" min="0.1" max="2.0" step="0.1" value="0.8" oninput="updateParamDisplay()">
+            </div>
+            <div class="control-group">
+                <label>干扰噪声: <span id="val-var">0.6</span></label>
+                <input type="range" id="param-var" min="0.1" max="1.5" step="0.1" value="0.6" oninput="updateParamDisplay()">
+            </div>
+            <div class="control-group" style="justify-content: flex-end;">
+                <button onclick="runSimulation()">重新运行模拟</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">总样本数 (N)<span id="stat-n">200</span></div>
+            <div class="stat-box">静态实验总遗憾<span id="regret-static">0</span></div>
+            <div class="stat-box">自适应实验总遗憾<span id="regret-adaptive">0</span></div>
+            <div class="stat-box">资源效率提升<span id="improvement">0%</span></div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container"><canvas id="probChart"></canvas></div>
+            <div class="chart-container"><canvas id="regretChart"></canvas></div>
+            <div class="chart-container"><canvas id="allocChart"></canvas></div>
+            <div class="chart-container"><canvas id="effectChart"></canvas></div>
+        </div>
+    </div>
+
+    <div class="section tech-note">
+        <h3>技术说明：什么是累积遗憾 (Cumulative Regret)？</h3>
+        <p>在自适应实验和强化学习中，累积遗憾是衡量算法效率的核心指标。它量化了实验过程中由于“不确定性”而导致的收益损失。</p>
+        <p><strong>1. 遗憾 (Regret) 的定义：</strong> 在实验的每一个决策点，遗憾被定义为“最优方案的真实均值”与“实际选择方案的真实均值”之间的差值。公式表达为：<code>Regret = μ* - μ(a)</code>。</p>
+        <p><strong>2. 累积效应：</strong> 它是实验从第一轮到最后一轮产生的所有遗憾的总和。
+            <ul>
+                <li>静态实验：由于样本均匀分配，即使已知某组表现差仍会继续投入，累积遗憾随样本量呈线性增长。</li>
+                <li>自适应实验：算法（如 Thompson Sampling）的目标是最小化累积遗憾。随着实验锁定最优组，遗憾增长曲线会逐渐变平。</li>
+            </ul>
+        </p>
+        <p><strong>3. 现实意义：</strong> 低遗憾意味着在实验过程中，更少的参与者被暴露在低效甚至有害的干预措施中，这在商业转化优化和医疗临床试验中具有极高的经济和道德价值。</p>
+    </div>
+
+    <div class="reference">
+        <strong>参考文献:</strong><br>
+        Hadad, V., Rosenzweig, L. R., Athey, S., & Karlan, D. (2021). <em>Practitioner’s guide: Designing adaptive experiments.</em> <br>
+        Golub Capital Social Impact Lab, Stanford Graduate School of Business.
+    </div>
+
+<script>
+let charts = {};
+
+// 误差棒插件
+const errorBarPlugin = {
+    id: 'errorBarPlugin',
+    afterDatasetsDraw: (chart) => {
+        const { ctx, data, scales: { y } } = chart;
+        if (chart.canvas.id !== 'effectChart') return;
+        data.datasets.forEach((dataset, datasetIndex) => {
+            const meta = chart.getDatasetMeta(datasetIndex);
+            meta.data.forEach((bar, index) => {
+                const errorVal = dataset.errorBars[index];
+                const yValue = dataset.data[index];
+                const x = bar.x;
+                const yTop = y.getPixelForValue(yValue + errorVal);
+                const yBottom = y.getPixelForValue(yValue - errorVal);
+                ctx.save();
+                ctx.strokeStyle = '#4A5568'; ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(x, yTop); ctx.lineTo(x, yBottom);
+                ctx.moveTo(x-4, yTop); ctx.lineTo(x+4, yTop);
+                ctx.moveTo(x-4, yBottom); ctx.lineTo(x+4, yBottom);
+                ctx.stroke(); ctx.restore();
+            });
+        });
+    }
+};
+Chart.register(errorBarPlugin);
+
+function updateParamDisplay() {
+    document.getElementById('val-batch').innerText = document.getElementById('param-batch').value;
+    document.getElementById('val-rounds').innerText = document.getElementById('param-rounds').value;
+    document.getElementById('val-effect').innerText = document.getElementById('param-effect').value;
+    document.getElementById('val-var').innerText = document.getElementById('param-var').value;
+    document.getElementById('stat-n').innerText = document.getElementById('param-batch').value * document.getElementById('param-rounds').value;
+}
+
+function gaussianRandom(mean=0, stdev=1) {
+    let u = 1 - Math.random(), v = 1 - Math.random();
+    return mean + stdev * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+}
+
+function runSimulation() {
+    updateParamDisplay();
+    const batchSize = parseInt(document.getElementById('param-batch').value);
+    const rounds = parseInt(document.getElementById('param-rounds').value);
+    const N = batchSize * rounds;
+    const effect = parseFloat(document.getElementById('param-effect').value);
+    const sigma = parseFloat(document.getElementById('param-var').value);
+    
+    const trueMeans = [effect, 0.4, 0.2, 0.1]; 
+    const colors = ['#4299e1', '#48bb78', '#ed8936', '#9f7aea'];
+
+    // 静态对比
+    const nS = N / 4;
+    const sEst = trueMeans.map(m => gaussianRandom(m, sigma / Math.sqrt(nS)));
+    const sCI = trueMeans.map(() => 1.96 * (sigma / Math.sqrt(nS)));
+    let sRegretTotal = 0;
+    for(let i=1; i<4; i++) sRegretTotal += (trueMeans[0] - trueMeans[i]) * nS;
+
+    // 自适应模拟
+    let counts = [1,1,1,1], sums = [0,0,0,0], aAlloc = [0,0,0,0];
+    let aRH = [0], pH = [[],[],[],[]];
+    let curR = 0;
+
+    for(let r = 0; r < rounds; r++) {
+        let winC = [0,0,0,0];
+        for(let s=0; s<200; s++) {
+            let draws = counts.map((n, i) => gaussianRandom(sums[i]/n, sigma/Math.sqrt(n)));
+            winC[draws.indexOf(Math.max(...draws))]++;
+        }
+        winC.forEach((wc, i) => pH[i].push(wc/200));
+
+        for(let b = 0; b < batchSize; b++) {
+            let draws = counts.map((n, i) => gaussianRandom(sums[i]/n, sigma/Math.sqrt(n)));
+            let arm = draws.indexOf(Math.max(...draws));
+            sums[arm] += gaussianRandom(trueMeans[arm], sigma);
+            counts[arm]++; aAlloc[arm]++;
+            curR += (trueMeans[0] - trueMeans[arm]);
+        }
+        aRH.push(curR);
+    }
+
+    renderCharts(sRegretTotal, curR, nS, aAlloc, aRH, pH, sEst, sums.map((s,i)=>s/counts[i]), sCI, counts.map(n=>1.96*(sigma/Math.sqrt(n))), rounds, colors);
+}
+
+function renderCharts(sR, aR, sAlloc, aAlloc, aRH, pH, sEst, aEst, sCI, aCI, rounds, colors) {
+    document.getElementById('regret-static').innerText = sR.toFixed(1);
+    document.getElementById('regret-adaptive').innerText = aR.innerText = aR.toFixed(1);
+    document.getElementById('improvement').innerText = (((sR-aR)/sR)*100).toFixed(0) + "%";
+
+    const common = { responsive: true, maintainAspectRatio: false };
+    const rLabels = Array.from({length: rounds}, (_, i) => i + 1);
+
+    if(charts.prob) charts.prob.destroy();
+    charts.prob = new Chart(document.getElementById('probChart'), {
+        type: 'line', data: { labels: rLabels, datasets: pH.map((d, i) => ({ label: `方案 ${i+1}`, data: d, borderColor: colors[i], fill: false })) },
+        options: { ...common, plugins: { title: { display: true, text: '图 1: 最优方案选择概率演变' } } }
+    });
+
+    if(charts.regret) charts.regret.destroy();
+    charts.regret = new Chart(document.getElementById('regretChart'), {
+        type: 'line', data: { labels: [0, ...rLabels], datasets: [
+            { label: '静态实验遗憾', data: [0, ...rLabels.map(r => (sR/rounds)*r)], borderColor: '#CBD5E0', borderDash: [5,5] },
+            { label: '自适应实验遗憾', data: aRH, borderColor: '#F56565', borderWidth: 3 }
+        ]}, options: { ...common, plugins: { title: { display: true, text: '图 2: 累积遗憾对比 (随轮次增长)' } } }
+    });
+
+    if(charts.alloc) charts.alloc.destroy();
+    charts.alloc = new Chart(document.getElementById('allocChart'), {
+        type: 'bar', data: { labels: ['方案 1', '方案 2', '方案 3', '方案 4'], datasets: [
+            { label: '静态分配', data: [sAlloc, sAlloc, sAlloc, sAlloc], backgroundColor: '#CBD5E0' },
+            { label: '自适应分配', data: aAlloc, backgroundColor: colors }
+        ]}, options: { ...common, plugins: { title: { display: true, text: '图 3: 总样本分配对比' } } }
+    });
+
+    if(charts.effect) charts.effect.destroy();
+    charts.effect = new Chart(document.getElementById('effectChart'), {
+        type: 'bar', data: { labels: ['方案 1', '方案 2', '方案 3', '方案 4'], datasets: [
+            { label: '静态估值', data: sEst, backgroundColor: '#E2E8F0', errorBars: sCI },
+            { label: '自适应估值', data: aEst, backgroundColor: colors.map(c=>c+'AA'), errorBars: aCI }
+        ]}, options: { ...common, plugins: { title: { display: true, text: '图 4: 估值精度对比 (误差线越短越精确)' } } }
+    });
+}
+window.onload = runSimulation;
+</script>
+</body>
+</html>
