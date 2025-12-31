@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>明天的阳光 v2｜2025–2026 因果机器学习跨年讲读会</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background-image: url("background-wave.png");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: #333;
+}
+
+.background-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.78));
+  z-index: -1;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 20px 70px;
+}
+
+/* ===== 封面双列 ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 26px;
+  align-items: stretch;
+  margin-bottom: 26px;
+}
+
+.hero-poster {
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+
+.hero-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-header {
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  padding: 42px 30px;
+}
+
+.hero-header h1 {
+  font-size: 2.7em;
+  margin: 0 0 10px 0;
+}
+
+.subtitle-strong {
+  font-size: 1.55em;
+  font-weight: 800;
+  margin: 8px 0 10px 0;
+  color: #1f2a37;
+}
+
+.date {
+  color: #666;
+  font-size: 1.05em;
+}
+
+/* ===== 时间线 ===== */
+.timeline {
+  background: rgba(255,255,255,0.93);
+  border-radius: 18px;
+  padding: 22px 26px;
+  margin-bottom: 30px;
+}
+
+.timeline h2 {
+  font-size: 1.2em;
+  margin: 0 0 14px 0;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.timeline-item:first-of-type {
+  border-top: none;
+}
+
+.timeline-time {
+  font-weight: 700;
+}
+
+.program-section {
+  background: rgba(255,255,255,0.96);
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 28px;
+}
+
+.program-section h2 {
+  font-size: 1.65em;
+  margin: 0 0 14px 0;
+}
+
+.music-section {
+  background: linear-gradient(135deg,#fff1c7,#ffe2d6);
+}
+
+.talk-section {
+  background: linear-gradient(135deg,#e3f6f1,#cfeee7);
+}
+
+blockquote {
+  margin: 18px 0;
+  padding-left: 16px;
+  border-left: 4px solid rgba(17,24,39,0.25);
+  color: #374151;
+  line-height: 1.85;
+}
+
+.small-note {
+  color: #6b7280;
+  font-size: 0.98em;
+  line-height: 1.75;
+}
+
+a {
+  color: #1a5cff;
+  text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+.footer {
+  background: rgba(255,255,255,0.9);
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+<div class="background-overlay"></div>
+
+<div class="container" id="top">
+
+<!-- 封面 -->
+<div class="hero">
+  <div class="hero-poster">
+    <img src="poster.png" alt="明天的阳光 v2 海报">
+  </div>
+  <div class="hero-header">
+    <br><br><br><br>
+    <h1>明天的阳光 v2</h1>
+    <div class="subtitle-strong">2025–2026 因果机器学习跨年讲读会</div>
+    <div class="date">2025.12.31</div>
+    <br><br><br><br>
+    <div class="date">致谢：《华东师大教育评论（英文）》（ECNU Review of Education)、华东师范大学教育经济实验室</div>
+  </div>
+</div>
+
+<!-- 时间线 -->
+<div class="timeline">
+  <h2>时间线</h2>
+
+  <div class="timeline-item">
+    <div class="timeline-time">10 分钟</div>
+    <div><strong>开场音乐曲</strong></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-time">50 分钟</div>
+    <div><strong>上半场讲座</strong></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-time">18 分钟</div>
+    <div><strong>中场音乐曲 · 视频</strong></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-time">90 分钟</div>
+    <div><strong>下半场讲座（预估）</strong></div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-time">10 分钟</div>
+    <div><strong>结尾音乐曲</strong></div>
+  </div>
+</div>
+
+<!-- 上半场 -->
+<div class="program-section talk-section">
+  <h2>上半场讲座<br>《钢铁洪流，AI 经济学家们在做什么？》</h2>
+
+  <ul>
+    <li>
+      <strong>Jens Ludwig, Sendhil Mullainathan, Ashesh Rambachan</strong><br>
+      <em>Large Language Models: An Applied Econometric Framework</em><br>
+      <a href="https://arxiv.org/abs/2412.07031" target="_blank">arXiv:2412.07031</a>
+    </li>
+
+    <li style="margin-top:12px;">
+      <strong>
+        Bohan Zhang, Yukun Liu, Yixiao Song, Zhaoheng Zheng, Yuxuan Jiang,
+        Shengyu Zhang, Yifan Zhang, Yufeng Deng
+      </strong><br>
+      <em>Agentic Economic Modeling</em><br>
+      <a href="https://arxiv.org/abs/2510.25743" target="_blank">arXiv:2510.25743</a>
+    </li>
+
+    <li style="margin-top:12px;">
+      <strong>Ivan Zhao</strong><br>
+      <em>Steam, Steel, and Infinite Minds</em><br>
+      <a href="https://www.notion.com/blog/steam-steel-and-infinite-minds-ai" target="_blank">Notion Blog</a>
+    </li>
+  </ul>
+</div>
+
+<!-- 中场 -->
+<div class="program-section music-section">
+  <h2>中场音乐曲 · 视频<br>《明天的阳光 v2》</h2>
+
+  <p>画面来自大家分享的 2025 年照片；背景音乐来自生祥乐队。</p>
+
+  <p class="small-note">
+    报道链接：
+    <a href="https://news.qq.com/rain/a/20250529A0174200?suid=&media_id=" target="_blank">
+      https://news.qq.com/rain/a/20250529A0174200?suid=&media_id=
+    </a>
+  </p>
+
+  <blockquote>
+    <p>
+      “但直到演出开始前半小时，叶晓阳还在北大西门焦急等待着那个在成都认识的女孩，他们将在12年后结婚，
+      但直到她进入演出现场大讲堂二楼，还在嘀咕：“这林生祥到底是谁，你们听的歌可是真的小众。”
+      叶晓阳想要一心两用，他这样描述演出接近尾声时，诗人、词人钟永丰的登台：“永丰登场给我带来的莫大惊喜，
+      甚至一点不亚于我在北大西门见到她款款而来的瞬间。””
+    </p>
+
+    <p>
+      “2023年4月16日，叶晓阳特地选择12年前看演出的同一天，举办了婚礼。在北美求学多年的他，赶上了温哥华一整天的暴雨，
+      婚礼规模不大，在伊丽莎白女王公园举办。但他最想请来做主婚人的胡续冬，已在2021年夏天溘然长逝。
+      只有林生祥的音乐，成了旧人与新人、死者与生者间秘密的媒介，晓阳选了他的歌《细妹，汝看》，作为婚礼歌单的第一首。”
+    </p>
+  </blockquote>
+</div>
+
+<!-- 下半场 -->
+<div class="program-section talk-section">
+  <h2>下半场讲座<br>《骑着 AI，突破人类尺度》（Live Coding）</h2>
+
+  <p><strong>（一）AI 代替人类做实验</strong></p>
+
+  <p><strong>（二）AI 代替人类做论文评审</strong></p>
+  <ul>
+    <li><a href="ai-review/paper.pdf">paper.pdf</a></li>
+    <li><a href="ai-review/review-v1.html">review-v1.html</a></li>
+    <li><a href="ai-review/review-v2.html">review-v2.html</a></li>
+    <li>
+      <a href="ai-review/yaxin-review.pdf">yaxin-review.pdf</a><br>
+      <span class="small-note">对我的学生 <strong>Yaxin Wang（ASU Ph.D.）</strong> 博士论文的人工评审意见</span>
+    </li>
+  </ul>
+
+  <p><strong>（三）AI 代替人类做因果推断</strong></p>
+  <ul>
+    <li>再造一个新的 LLM 实验室</li>
+    <li>Causal Machine Learning：因果森林</li>
+    <li>双盲实验，现场验证</li>
+  </ul>
+</div>
+
+<!-- 结尾 -->
+<div class="program-section music-section">
+  <h2>结尾音乐曲</h2>
+
+  <p><strong>相关阅读</strong><br>
+    <a href="https://www.thepaper.cn/newsDetail_forward_30362999" target="_blank">《纪念方大同：他在人生最后一年把歌写成诗》</a>
+  </p>
+
+  <blockquote>
+    纪念方大同，不仅是对他短暂生命的缅怀，对他给华语音乐和文学留下的无穷杰作的珍惜，更是用他所表达出来的那种在未及暮年便已感受到病痛与衰老预兆的人生状态作我们自身反观。姜涛曾经说过，诗歌不仅在于表达情感，更在于建立起一种历史的视野，使个人的经验与更广阔的社会现实相连。方大同的这首《才二十三》，以个人生命为核心，但又不是孤例的“特别的人”，而是置于更广阔的时空之中：它是属于所有人的，属于每一个曾在时间的流动中感受到无奈、感受到温柔、感受到春风吹拂的瞬间的人。这让我这个已经做了他二十年的中年听众，在这个无边的夜晚，眼含泪水，打开窗户，奋力倾听春风如何轻吹，看他“到夏天变了谁”。
+    <br>
+    我也想到雪莱墓碑上刻着的那句诗，用来送给此刻已在千寻之外的方大同，依然合适：
+    <br>
+    Nothing of him that doth fade（他的一切都未曾消逝）
+    <br>
+    But doth suffer a Sea-change（只因历经沧海的洗礼）
+    <br>
+    Into something rich and strange.（变得丰饶而奇异。）
+  </blockquote>
+
+  <p>
+    <strong>方大同《才二十三》</strong>（林宝馨 街头翻唱）<br>
+    <strong>方大同、邓紫棋《春天里》</strong>
+  </p>
+</div>
+
+<!-- 宣言 -->
+<div class="program-section">
+  <h2 style="text-align:center;">骑着 AI，突破人类尺度，驶向未来</h2>
+  <p style="text-align:center;">
+    生产和传播先进科学；<br>
+    生产和传播现代文艺；<br>
+    生产和传播人类善良。
+  </p>
+</div>
+
+<div class="footer">
+  友松实验室 · Yu Soong Lab<br>
+  因果推断 × 机器学习 × 行为经济学
+</div>
+
+</div>
+</body>
+</html>
