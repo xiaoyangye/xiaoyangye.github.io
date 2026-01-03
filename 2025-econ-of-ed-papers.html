@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-2026 Economics of Education Job Market Papers (Selected)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #333;
+            position: sticky;
+            top: 0;
+            cursor: pointer;
+            user-select: none;
+        }
+        th.sortable:hover {
+            background-color: #e9ecef;
+        }
+        th.sortable::after {
+            content: ' ↕';
+            color: #999;
+        }
+        th.sort-asc::after {
+            content: ' ↑';
+            color: #333;
+        }
+        th.sort-desc::after {
+            content: ' ↓';
+            color: #333;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .university {
+            color: #e74c3c;
+            font-weight: 500;
+        }
+        .title {
+            max-width: 300px;
+            line-height: 1.4;
+        }
+        .title-link {
+            color: #2980b9;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .title-link:hover {
+            text-decoration: underline;
+        }
+        .title-chinese {
+            max-width: 300px;
+            line-height: 1.4;
+            color: #555;
+            font-style: italic;
+        }
+        .pdf-link {
+            color: #3498db;
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .pdf-link:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        .count {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .program-section {
+            margin-top: 40px;
+            padding: 30px 20px;
+            background-color: rgb(97, 154, 195);
+            color: white;
+            border-radius: 8px;
+        }
+        .program-section h2 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .program-section p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .footer {
+            margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* Modal styles for abstract popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: black;
+        }
+        .modal-title {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .modal-author {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .modal-abstract {
+            line-height: 1.6;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>2025-2026 Economics of Education Job Market Papers (Selected)</h1>
+        <div class="count">Total Papers: 39</div>
+        <table id="papersTable">
+            <thead>
+                <tr>
+                    <th class="sortable" onclick="sortTable(0)">Name</th>
+                    <th class="sortable" onclick="sortTable(1)">University</th>
+                    <th>Title</th>
+                    <th>Title (Chinese)</th>
+                    <th>PDF Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name">Alvin Christian</td>
+                    <td class="university">Michigan</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Alvin Christian', 'Michigan', 'Academic Accommodations in Higher Education: Patterns, Predictors, and Potential', 'The share of college students identifying as disabled and using academic accommodations (e.g., extended test time) has dramatically increased over the past two decades. We link course transcripts, disability office records, and K-12 special education histories at a large public flagship to study accommodations. We provide three main findings. First, we show usage has risen sharply—between 2011 and 2024, usage rose from 4% to 10%, driven by a fourfold increase in mental-health diagnoses. A decomposition exercise indicates K-12 disability growth explains about one-quarter of this increase. Second, we document stark socioeconomic disparities in use. Conditional on prior documented disability, men and Asian students are less likely to apply and be approved, and conditional on applying, high-income students are more likely to be approved. Third, using student fixed effects and comparisons between approved and non-approved applicants while controlling for rich observables, we find that accommodations yield substantial benefits. Approved students withdraw from fewer courses, earn higher GPAs, persist longer, and are more likely to major in STEM—driven by greater persistence among existing STEM students. Together, these findings clarify the sources of growth and gaps in use and provide some of the first evidence on the academic returns to accommodations in higher education, with direct implications for STEM diversity and retention.')">Academic Accommodations in Higher Education: Patterns, Predictors, and Potential</a>
+                    </td>
+                    <td class="title-chinese">高等教育中的学术便利：模式、预测因子和潜力</td>
+                    <td><a href="2025-papers/Alvin Christian - Michigan - Academic Accommodations in Higher Education_ Patterns, Predictors, and Potential.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Andrea Franco-Hernández</td>
+                    <td class="university">Wisconsin</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Andrea Franco-Hernández', 'Wisconsin', 'School or Crime: A Teenager\\'s Choice', 'This paper studies how exposure to organized crime affects teenagers\\' educational choices and how public policy responds in such contexts. We focus on the 2008 extradition of Medellín\\'s top gang leader, after which a gang war erupted and created neighborhood-level variation in criminal activity. Using rich administrative data from Medellín, Colombia, we find that dropout rates among boys increased in affected neighborhoods, while girls were unaffected,consistent with heightened gang recruitment rather than general violence. We then examine how Conditional Cash Transfer (CCT) programs shaped educational outcomes and find that they effectively reduced dropout rates, with stable impacts even amid increased gang activity. To further understand criminal involvement and evaluate policy responses, we develop and estimate a dynamic discrete choice model of schooling, crime, and labor market decisions from middle school through early adulthood. Leveraging design-based results, we identify shifts in the criminal payoff and assess the effectiveness of CCTs in offsetting dropout. The model evaluates three policy interventions: (i) expanding CCT coverage, (ii) increasing law enforcement, and (iii) combining both. Expanding subsidies reduces teenage crime and arrests during school years and raises higher-education enrollment, though with limited post-school effects. Stronger law enforcement curbs post-school crime but raises arrests among teenagers. Combining both policies yields the largest crime reduction but smaller educational gains than CCTs alone. A back-of-the-envelope cost-benefit analysis shows that while the combined policy delivers the highest net benefits, expanding CCT coverage achieves nearly comparable gains at lower implementation costs and with clearer fiscal implications.')">School or Crime? A Teenager's Choice</a>
+                    </td>
+                    <td class="title-chinese">上学还是犯罪？青少年的选择</td>
+                    <td><a href="2025-papers/Andrea Franco-Hernández - Wisconsin - School or Crime_ A Teenager's Choice.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Anne Carlstein</td>
+                    <td class="university">MIT</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Anne Carlstein', 'MIT', 'Randomizing Elite School Admissions', 'What happens if students are randomized to elite schools? This paper studies the causal effects of attending several highly sought-after public high schools in New York City (termed the \"screened select\") under two starkly different admissions regimes: a traditional screening process based on test scores and grades, and a partial lottery introduced in 2021. Leveraging this policy reform, I compare the impacts of screened select attendance before and after the admissions change using an IV strategy. While the screened select schools boosted overall SAT scores by approximately 30 points under traditional screened admissions, they had no positive impact in the post-reform lottery era. However, these effects are heterogeneous: students who would not be admitted under full screening saw positive impacts on SAT Math scores, and students who would have been admitted under screening saw negative impacts on SAT Math scores. I provide evidence that these effects are primarily driven by changes in the school peer composition rather than shifts in school resources or curricula. Using a stylized model of admissions, I formalize the tradeoff between equity and testing outcomes and characterize when a partial lottery would be optimal.')">Randomizing Elite School Admissions</a>
+                    </td>
+                    <td class="title-chinese">精英学校招生的随机化</td>
+                    <td><a href="2025-papers/Anne Carlstein - MIT - Randomizing Elite School Admissions.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Ashley Schwanebeck</td>
+                    <td class="university">Penn</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Ashley Schwanebeck', 'Penn', 'Paying for Lack of Performance? Effects of Principal Incentive Pay on Students and Teachers', 'With national test scores at historic lows, incentives that motivate effective school leadership are increasingly important, yet principal pay typically follows fixed schedules rather than student outcomes. This paper studies the effects of a principal incentive pay program implemented in North Carolina on principal effort, teacher effectiveness and student test scores. I employ two models to estimate the causal effects of principal incentive pay on student test scores: (i) a difference-in-differences matching model and (ii) a synthetic difference-in-differences model, both using school-grade panel data and comparing North Carolina (NC) to Georgia (GA). I find the policy induced large declines in student outcomes, reducing reading and math scores by 0.09-0.11 and 0.13-0.14 SD, respectively. To decompose policy channels, I combine NC administrative data with the Teacher Working Conditions Survey to construct principal-effort indices along four dimensions and estimate teacher value added pre/post reform. I then relate teacher value added to principal effort and characteristics to understand how principals influence teachers. I find that teacher effectiveness fell by 0.05 SD in math and 0.01 SD in reading, and principal effort devoted to school climate declined by 0.03 SD. Teachers are most responsive to principal effort in school climate, professional development, and reduced administrative burden.')">Paying for Lack of Performance? Effects of Principal Incentive Pay on Students and Teachers</a>
+                    </td>
+                    <td class="title-chinese">为绩效不佳买单？校长激励薪酬对学生和教师的影响</td>
+                    <td><a href="2025-papers/Ashley Schwanebeck - Penn - Paying for Lack of Performance_ Effects of Principal Incentive Pay on Students and Teachers.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Aya Jibet</td>
+                    <td class="university">NYU</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Aya Jibet', 'NYU', 'Breaking Barriers to Elite Education: Evidence from Sciences Po\\'s Affirmative Action Policy', 'This paper evaluates the causal impact of Sciences Po\\'s Conventions Éducation Prioritaire (CEP) affirmative action program on access to and success in elite higher education. Leveraging a novel instrumental variable strategy based on the random assignment of oral examiners with varying levels of grading leniency, we estimate the effect of CEP admission on students\\' academic trajectories. Using linked administrative data covering all French high school graduates and detailed admissions records from Sciences Po, we find that CEP admission does not significantly increase the probability of completing a master\\'s degree (extensive margin), but it substantially shifts admitted students toward more selective and prestigious master\\'s programs (intensive margin). Our findings provide no evidence of mismatch and suggest that territorially targeted indirect affirmative action can improve access to elite academic pathways without compromising student outcomes.')">Breaking Barriers to Elite Education: Evidence from Sciences Po's Affirmative Action Policy</a>
+                    </td>
+                    <td class="title-chinese">打破精英教育壁垒：来自巴黎政治学院平权行动政策的证据</td>
+                    <td><a href="2025-papers/Aya Jibet - NYU - Breaking Barriers to Elite Education_ Evidence from Sciences Po's Affirmative Action Policy.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Clara Kyung</td>
+                    <td class="university">Chicago</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Clara Kyung', 'Chicago', 'Resources or Rewards? The Impacts of School District Funding and Incentives on Student Outcomes', 'School funding and accountability are prevalent policy tools in public education, but their efficacy in improving student outcomes remains contested. We study the impacts of a statewide education reform in Texas that (1) changed the formula that links school district characteristics to funding, and, in a novel shift from test-based accountability, (2) introduced financial bonuses for districts based on high school graduates\\' attainment outcomes, including college enrollment and industry-based certification. Using policy-driven, between-district variation in district spending and incentives, we find that both spending and incentives improved the composite attainment outcome targeted by the bonus policy. Relative to funding increases, incentives produced comparable gains at a lower government cost. Effects on attainment are driven by industry-based certifications, with little effect on college enrollment. However, by focusing on high school graduates\\' outcomes, the bonus structure inadvertently incentivized districts to reduce graduation rates among 12th graders who were unlikely to meet the attainment criteria: incentives decreased graduation rates and increased dropout rates. Consequently, we find mixed evidence on college and career outcomes one year after 12th grade: neither district spending nor incentives affected the share of students who were employed or enrolled in college, but incentives increased earnings. Our results highlight both the potential promise and design challenges of attainment-based incentive policies.')">Resources or Rewards? The Impacts of School District Funding and Incentives on Student Outcomes</a>
+                    </td>
+                    <td class="title-chinese">资源还是奖励？学区资金和激励措施对学生成果的影响</td>
+                    <td><a href="2025-papers/Clara Kyung - Chicago - Resources or Rewards_ The Impacts of School District Funding and Incentives on Student Outcomes.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">David Titus</td>
+                    <td class="university">Cornell</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('David Titus', 'Cornell', 'Immigration Policies and Human Capital: The Impact on Undocumented College Attendance', 'I estimate the impact of Universal E-Verify laws on the college attendance of undocumented Hispanics in the United States. To do so, I implement a series of event studies that account for staggered adoption over time, and I use a random forest algorithm as my primary approach for predicting undocumented status. My results indicate that Universal E-Verify laws lower the college attendance of undocumented Hispanics ages 18–24 by about 3.7 percentage points. This is a substantial effect: only 15.7 percent of undocumented Hispanics ages 18–24 in treated states were enrolled in college following the passage of the laws. This effect is robust to using logical imputation on non-citizen Hispanics to proxy for undocumented immigrants, using a logit model instead of random forest, testing for migration spillover effects on bordering states, and considering potentially confounding impacts of other state-level policies. I develop a theoretical model that explains the mechanisms through which Universal E-Verify affects college education, and I test this model\\'s implications. I find suggestive evidence that the effect is driven by a negative labor market shock on undocumented adults ages 25–54, which likely leads to worse schooling for their children and renders college less attainable. These findings indicate that employment restrictions targeting working-age undocumented adults hinder the human capital development of undocumented youth.')">Immigration Policies and Human Capital: The Impact on Undocumented College Attendance</a>
+                    </td>
+                    <td class="title-chinese">移民政策与人力资本：对无证大学入学的影响</td>
+                    <td><a href="2025-papers/David Titus - Cornell - Immigration Policies and Human Capital_ The Impact on Undocumented College Attendance.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Diego Briones</td>
+                    <td class="university">UVA</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Diego Briones', 'UVA', 'Credit Scars: Credit Reporting Relief for Defaulted Student Loan Borrowers', 'Over one in five student loan borrowers eventually defaults, leaving a persistent black mark on their credit reports. These borrowers disproportionately attended low-return institutions and come from disadvantaged backgrounds, raising concerns that credit record penalties may be restricting economic mobility. I estimate the causal effect of removing student loan default records from credit reports by leveraging their automatic removal under the seven-year Fair Credit Reporting Act (FCRA) threshold, which I establish as the primary mechanism for student loan default record clearance. Using a nationally representative panel of quarterly administrative credit bureau records and a stacked difference-in-differences design, I find that record removal boosts credit scores by 15 points and spurs significant new borrowing across mortgage, auto, and credit card markets, primarily on the extensive margin. These results indicate that default records continued to function as barriers to credit long after the initial financial distress. The value that individuals place on increased access to credit more than seven years after the initial default event suggests significant private and social returns to programs that successfully rehabilitate defaults or to programs intended to prevent default.')">Credit Scars: Credit Reporting Relief for Defaulted Student Loan Borrowers</a>
+                    </td>
+                    <td class="title-chinese">信用疤痕：为违约学生贷款借款人提供信用报告减免</td>
+                    <td><a href="2025-papers/Diego Briones - UVA - Credit Scars_ Credit Reporting Relief for Defaulted Student Loan Borrowers.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Ekaterina Gurkova</td>
+                    <td class="university">UCLA</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Ekaterina Gurkova', 'UCLA', 'Human Capital Accumulation and the Long-Term Effects of Temporary Sectoral Shocks', 'This paper investigates the impact of temporary sectoral shocks on human capital accumulation and introduces a structural model to quantify their long-term general equilibrium effects. I use Spain\\'s economic boom (1995-2007) as a case study, which represented a positive labor demand shock in construction and low-skill services, and show that it led to a persistent decline in educational attainment among young workers. To evaluate the general equilibrium implications of this shock during the transition, I construct a quantitative lifecycle model in which workers endogenously choose education and sectoral employment under imperfect human capital transferability. The model reproduces the observed decline in educational attainment and sluggish labor reallocation following the boom. The transition, which is driven primarily by new cohorts, entails a persistent decline in aggregate productivity, with cumulative losses of about 7% and convergence to the steady state over roughly 50 years. The findings demonstrate that positive sectoral shocks can generate adverse long-run aggregate outcomes and substantial distributional effects— cohorts born during the boom experience lifetime earnings gains of nearly 11%, while those born before or after incur losses—highlighting the scope for redistributive policy interventions.')">Human Capital Accumulation and the Long-Term Effects of Temporary Sectoral Shocks</a>
+                    </td>
+                    <td class="title-chinese">人力资本积累与临时部门冲击的长期影响</td>
+                    <td><a href="2025-papers/Ekaterina Gurkova - UCLA - Human Capital Accumulation and the Long-Term Effects of Temporary Sectoral Shocks.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Elizabeth Jaramillo-Rojas</td>
+                    <td class="university">Northwestern</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Elizabeth Jaramillo-Rojas', 'Northwestern', 'Beyond Recipients: Sibling Spillovers of College Financial Aid', 'This paper studies sibling spillovers from a large-scale college financial aid program in Colombia. In 2014, the government launched Ser Pilo Paga (\"Hard Work Pays Off\"), a merit- and need-based scholarship targeting high-achieving students from low-income households. Eligibility was determined jointly by household poverty status and performance on the national high school exit exam. I use these criteria as a source of quasi-random variation to estimate effects on younger siblings\\' outcomes. When an older sibling qualifies, younger siblings\\' exam scores rise by 0.11 standard deviations (26 percent), their probability of immediate college enrollment increases by 14 percent, and enrollment shifts toward high- quality, mostly private, universities. Labor outcomes follow a U-shape: employment falls in the first four years as college attendance rises but is 3.2 percentage points higher by year six. We also find large social returns: the probability of a criminal conviction among younger siblings falls by 63 percent, with effects concentrated in the poorest households. Younger siblings of students who were close to receiving the scholarship also show modest gains, consistent with increased motivation and with reallocation effects, as eligible students shift toward private universities and free up scarce seats in competitive public institutions. Overall, the results show that financial aid programs can generate sizable within-family spillovers, extending beyond education to labor markets and crime.')">Beyond Recipients: Sibling Spillovers of College Financial Aid</a>
+                    </td>
+                    <td class="title-chinese">超越受益者：大学财政援助的兄弟姐妹溢出效应</td>
+                    <td><a href="2025-papers/Elizabeth Jaramillo-Rojas - Northwestern - Beyond Recipients.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Francesco Billari</td>
+                    <td class="university">Cornell</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Francesco Billari', 'Cornell', 'Attempt Limits in Standardized Testing: Theory and Evidence', 'Attempt limits are widely used in standardized tests for personnel selection and licensing. Using data from the U.S. Bar Exam, I provide descriptive evidence that introducing attempt limits increases passing rates. This is consistent with the rationale that limiting attempts imposes a test-taking cost that induces self-selection: candidates sit only when they expect a sufficiently high probability of passing. In this sense, attempt limits can improve the average quality of successful candidates. Motivated by this evidence, I develop a principal–agent model revealing a trade-off: attempt limits deter weaker candidates but also prevent some stronger ones from eventually succeeding, so governments strongly averse to human capital loss may oppose them. Thus, I provide a normative framework for the design of attempt limits. First, I show that the limit is optimal only if the test is not difficult. Second, when the limit is chosen jointly with the passing score, the optimal design depends on the test\\'s information structure: if the test is better at identifying strong candidates, the attempt limit is optimal; if instead the test is better at identifying weak candidates, the principal prefers a difficult exam with unlimited retakes. Finally, when the information structure itself can be chosen, the principal should adopt a test that is better at identifying strong agents if candidate\\'s responsiveness to the attempt limit is high.')">Attempt Limits in Standardized Testing: Theory and Evidence</a>
+                    </td>
+                    <td class="title-chinese">标准化考试中的尝试限制：理论与证据</td>
+                    <td><a href="2025-papers/Francesco Billari - Cornell - Attempt Limits in Standardized Testing_ Theory and Evidence.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Francisco Pardo</td>
+                    <td class="university">UT Austin</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Francisco Pardo', 'UT Austin', 'When the Household Becomes the School: Siblings, Parental Attention, and School Closures', 'This paper examines how the presence of siblings affects the production of education when instructional responsibilities move from schools to households. First, I document a new global stylized fact: children with siblings experienced substantially larger learning losses than only children during prolonged school closures. Using administrative data from Peru, I show that students with siblings lost 0.05 standard deviations more in GPA and standardized test scores, with effects increasing in the number of siblings and persisting years after schools reopened. Second, to prove these differences reflect a causal effect of siblings rather than correlated factors, I leverage a difference-in-differences strategy comparing children with and without siblings before, during, and after the COVID-19 school closures. Instrumental variable estimates that exploit a preference for the sex composition of children to isolate exogenous variation in family size corroborate these results. Third, I present evidence that parental time constraints are the main mechanism: effects are strongest in families that typically invest more time in their children. Using school starting age cutoffs and a regression discontinuity design, I show that when younger siblings start school and spend less time at home, older siblings\\' performance and parental support improve, but these spillovers disappeared during school closures when all children remained home. Overall, these results reveal how the dilution of parental time during school closures disproportionately disadvantaged larger families and highlight the essential role of schools in mitigating household constraints in education.')">When the Household Becomes the School: Siblings, Parental Attention, and School Closures</a>
+                    </td>
+                    <td class="title-chinese">当家庭成为学校：兄弟姐妹、父母关注和学校关闭</td>
+                    <td><a href="2025-papers/Francisco Pardo - UT Austin - When the Household Becomes the School_ Siblings, Parental Attention, and School Closures.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Geoffrey Kocks</td>
+                    <td class="university">MIT</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Geoffrey Kocks', 'MIT', 'Sorting or Supporting? The Effect of Gifted Education on Achievement and Access', 'We study the impacts of New York City kindergarten gifted and talented (G&T) programs on achievement and access to elite secondary schools. We combine two research designs: a regression discontinuity at a qualifying exam cutoff and a lottery design arising from centralized assignment. The latter permits the identification of effects for students scoring above the cutoff. While G&T markedly changes the classroom environment, there is no impact on achievement using both empirical strategies, with precise and insignificant effects smaller than 0.04 when pooling the designs. In contrast, G&T boosts applications and enrollment in elite middle schools in the lottery sample. Effects on school access are largest among low-income students and those with high baseline ability. We use our estimates to predict how a recent admissions reform that replaced the G&T entrance exam with teacher recommendations affects elite school access. The reform increased the share of low-income students in G&T from 22 to 28 percent. A structural model of G&T demand shows that it also decreased the mean baseline ability. The decline in baseline ability outweighs the gains in low-income enrollment, lowering the average treatment effect on elite school access for G&T students. We trace out a policy possibilities frontier, comparing treatment effects and the low-income enrollment share under best-case policies. While neither exam nor recommendation admissions are on the frontier, exam-based admissions are closer.')">Sorting or Supporting? The Effect of Gifted Education on Achievement and Access</a>
+                    </td>
+                    <td class="title-chinese">分类还是支持？天才教育对成就和机会的影响</td>
+                    <td><a href="2025-papers/Geoffrey Kocks - MIT - Sorting or Supporting_ The Effect of Gifted Education on Achievement and Access.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Haruka Uchida</td>
+                    <td class="university">Chicago</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Haruka Uchida', 'Chicago', 'What Do Blind Evaluations Reveal? How Discrimination Shapes Representation and Quality', 'Concealing candidate identities during evaluations (\"blinding\") is often proposed to combat discrimination, yet its effects on the composition and quality of selected candidates, as well as its underlying mechanisms, remain unclear. I conduct a field experiment at an international academic conference, randomly assigning all 657 submitted papers to two blind and two non-blind reviewers (245 total) and collecting paper quality measures---citations and publication statuses five years later. I find that blinding significantly shrinks gaps in reviewer scores and acceptances by student status and institution rank, with no significant effects by gender. These increases in representation are not at the expense of quality: papers selected under blind review are of comparable quality to those selected non-blind. To understand mechanisms, I run a second field experiment that again implements blind and non-blind review, and elicits reviewer predictions of future submission outcomes. I combine my experiments to estimate a model of reviewer scores that uses blind scores to decompose non-blind disparities into distinct forms of discrimination. I find that the nature of discrimination differs by trait: student score gaps are explained by inaccurate beliefs about paper quality (inaccurate statistical discrimination) and alternative objectives (such as favoring authors whose acceptance benefits others), while institution gaps are attributable to residual drivers such as animus.')">What Do Blind Evaluations Reveal? How Discrimination Shapes Representation and Quality</a>
+                    </td>
+                    <td class="title-chinese">盲评揭示了什么？歧视如何影响代表性和质量</td>
+                    <td><a href="2025-papers/Haruka Uchida - Chicago - What Do Blind Evaluations Reveal_ How Discrimination Shapes Representation and Quality.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Hema Shah</td>
+                    <td class="university">Duke</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Hema Shah', 'Duke', 'High School Teachers and College-Relevant Skill Production: Evidence from ACT Score Value Added', 'The transition from high school to college is crucial for children\\'s later life outcomes, yet little is known about the role of high school educational inputs in developing skills relevant to college coursework. I estimate high school teacher value added on ACT scores using administrative data from North Carolina. I then evaluate how exposure to teachers with high ACT score value added impacts college enrollment and performance. I find that ACT score value added varies substantially across math and English teachers, indicating that some generate larger gains in ACT performance. Exposure to teachers with high ACT score value added increases on-time 4-year college enrollment and enrollment in selective 4-year colleges, decreases 2-year college enrollment, and improves 4-year college performance. A one standard deviation increase in math ACT score value added increases the likelihood of completing a 4-year college degree within 5 years of high school completion by 8% due to increased 4-year college enrollment, increased enrollment in selective 4-year colleges with high completion rates, and improved college performance. My results suggest that high school teachers have significant scope to influence the production of college-relevant skills.')">High School Teachers and College-Relevant Skill Production: Evidence from ACT Score Value Added</a>
+                    </td>
+                    <td class="title-chinese">高中教师与大学相关技能培养：来自ACT分数增值的证据</td>
+                    <td><a href="2025-papers/Hema Shah - Duke - High School Teachers and College-Relevant Skill Production- Evidence from ACT Score Value Added.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Hyunkyeong Lim</td>
+                    <td class="university">Wisconsin</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Hyunkyeong Lim', 'Wisconsin', 'Grading Policies and College Major Choice with Ability Learning', 'Universities worldwide have experienced substantial grade inflation. At some U.S. institutions, nearly half of all grades are now A\\'s, with inflation particularly pronounced in non-STEM fields. This paper studies how uneven grade inflation affects students\\' course-taking, major choice, and sorting by comparative advantage. I develop a dynamic model of college course and major choices that features two key mechanisms: students\\' concern for maintaining a high GPA and their learning about unobserved, major-specific ability from course grades. The model is matched to the grade distribution and educational outcomes of the administrative data from a large public university in Texas. To separately identify GPA concerns from ability learning, I exploit the temporary expansion of pass/fail grading during the COVID-19 pandemic. Counterfactual analyses show that equalizing grading standards to non-STEM levels increases STEM graduation by 2–10% and reduces dropout by 10–22%. It also narrows the gender gap in STEM graduation by about 8%. However, grade inflation weakens sorting: about 15% of students with low relative STEM ability remain in STEM.')">Grading Policies and College Major Choice with Ability Learning</a>
+                    </td>
+                    <td class="title-chinese">评分政策与能力学习下的大学专业选择</td>
+                    <td><a href="2025-papers/Hyunkyeong Lim - Wisconsin - Grading Policies and College Major Choice with Ability Learning.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">James Lee</td>
+                    <td class="university">UCLA</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('James Lee', 'UCLA', 'Do Transfer Students Harm Direct Admits? A Peer Effects Case Study', 'In recent years, policymakers across the United States have established more programs to help community college students transfer to four-year programs to earn bachelor\\'s degrees. Evidence from recent papers (Bianchi, 2020, Genakos and Kyrkopoulou, 2023, Machado et al., 2025) suggests that the implementation of similar programs to expand educational access to non-traditional students may have detrimental effects on traditional students. By using administrative and post-graduation survey data from one of the University of California schools, this paper is the first to investigate the peer effects of community college transfer students on students who are admitted through traditional channels (direct admits). To identify these effects, I compare students with similar academic preparation and course preferences who are exposed to different shares of transfer students in their courses due to randomness in the scheduling of courses. In the short run I find a small, statistically significant positive effect of transfer exposure on direct admits\\' grades that is visible in upper and lower division courses and for all fields of study. These effects appear to be driven by a \"curve effect\": because transfer students academically perform worse on average, they increase the ranking of direct admits. Controlling for the major choice of direct admits (which is minimally impacted by transfer exposure), I find that direct admits who are more exposed to transfer students in their college career graduate faster. I do not find statistically significant effects on labor market outcomes, though the estimates are noisy.')">Do Transfer Students Harm Direct Admits? A Peer Effects Case Study</a>
+                    </td>
+                    <td class="title-chinese">转学生会伤害直接录取学生吗？同伴效应案例研究</td>
+                    <td><a href="2025-papers/James Lee - UCLA - Do Transfer Students Harm Direct Admits_ A Peer Effects Case Study.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Jonathan Smith</td>
+                    <td class="university">Wisconsin</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Jonathan Smith', 'Wisconsin', 'The Effects of High School Curriculum Standards Reform: Evidence from Texas', 'This paper combines design-based evidence with a structural model to examine how curriculum standards influence student choices and school incentives. I exploit a Texas policy that made a college-preparatory curriculum the default for incoming ninth graders. Using a two-way fixed effects design, I show that it improved high school and postsecondary outcomes for low-performing students. To uncover mechanisms and assess alternative designs, I estimate a dynamic schooling model of curriculum assignment, course-taking, and college enrollment, and use it to simulate three potential policies. First, requiring all students to begin in the college-preparatory track raises college attendance by 12 percentage points for low-performing students. Second, state education policies prioritizing college enrollment increase attendance from 48% to 54% but raise dropout by 3 percentage points. Third, policies emphasizing test performance narrow achievement gaps by 10% and reduce dropout to 6.5% at the cost of lower college attendance. These results highlight clear trade-offs between short-term achievement and long-term college access, underscoring the need to align school incentives with postsecondary goals.')">The Effects of High School Curriculum Standards Reform: Evidence from Texas</a>
+                    </td>
+                    <td class="title-chinese">高中课程标准改革的影响：来自德克萨斯州的证据</td>
+                    <td><a href="2025-papers/Jonathan Smith - Wisconsin - The Effects of High School Curriculum Standards Reform_ Evidence from Texas.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Karen Ni</td>
+                    <td class="university">HKS</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Karen Ni', 'HKS', 'Divergent Pathways: The Impact of Alternative Pathways to HS Graduation on Student Outcomes', 'Over the past decades, many U.S. states have moved away from high-stakes exit exams toward more flexible graduation requirements. In Ohio, this shift includes new career-technical pathways that allow students to demonstrate competency outside standardized testing. This paper examines how such career-focused alternative graduation pathways affect students who struggle to meet exam standards. Using a regression discontinuity design around the pass/fail cutoff for Ohio\\'s end-of-course (EOC) math exams, I find that passing the Math EOC does not affect high school graduation rates but significantly alters college enrollment patterns: students who barely fail are less likely to attend four-year colleges and are about equally more likely to enroll in two-year institutions. These effects appear to stem from gendered behavioral responses to exam performance and from students\\' use of career-technical pathways after failing. While these pathways have broadened access to a diploma, they have not improved persistence in postsecondary education, suggesting that flexibility in graduation requirements may reduce barriers to completion without strengthening college readiness.')">Divergent Pathways: The Impact of Alternative Pathways to HS Graduation on Student Outcomes</a>
+                    </td>
+                    <td class="title-chinese">分歧路径：高中毕业替代路径对学生成果的影响</td>
+                    <td><a href="2025-papers/Karen Ni - HKS - Divergent Pathways_ The Impact of Alternative Pathways to HS Graduation on Student Outcomes.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Kartik Vira</td>
+                    <td class="university">MIT</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Kartik Vira', 'MIT', 'Friends in Higher Places: Social Fit and University Choice', 'Low-income students are less likely to attend elite universities than equally qualified high-income peers, in large part because they apply at lower rates. We study whether this reflects a lack of exposure to students who have attended top universities, and how exposure affects students\\' perceptions. Using UK administrative data, we exploit \"breakthrough\" events when a school first sends a student to a top university. Applications from that school to that university subsequently rise by 30%. This access promotes upward mobility: marginal entrants graduate at typical rates and earn £4,000 more annually than matched control students, despite coming from relatively poor backgrounds. To understand why students who lack exposure might not apply, we turn to a field experiment in British schools. We find that a primary barrier is students\\' beliefs about their social fit. At baseline, low-income students are more pessimistic about their social fit at elite universities, but not their chances of receiving an offer or graduating. Students randomly assigned to view short videos of undergraduates discussing their experiences are 6 percentage points more likely to apply to the speaker\\'s university. This treatment makes students more positive about their social fit at that university, with no effect on other beliefs. Finally, when matched with mentors, students primarily seek out information about social life. Our findings highlight perceptions of the social environment at elite universities as a central barrier to applications and illustrate scalable treatments to promote access and social mobility.')">Friends in Higher Places: Social Fit and University Choice</a>
+                    </td>
+                    <td class="title-chinese">高处的朋友：社会适应性与大学选择</td>
+                    <td><a href="2025-papers/Kartik Vira - MIT - Friends in Higher Places_ Social Fit and University Choice.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Laura Caron</td>
+                    <td class="university">Columbia</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Laura Caron', 'Columbia', 'The Short- and Long-Term Impacts of Expanding Public Education for Disabled Students', 'Between 1949 and 1980, every U.S. state mandated public schools to provide educational services for disabled students. This is one of the largest education reforms in U.S. history, but little is known about its impacts. Given scarce data in this period, I compile survey and administrative datasets and set up a difference-in-difference design using variation in the mandates\\' timing. I show that the mandates increased both services for disabled students and preschool enrollments. In adulthood, disabled individuals below school age at a mandate\\'s implementation became about 20% less likely to have no education, attained up to 0.23 more years of education, and were more likely to have worked. Although this policy could have taken away resources from non-disabled students, in fact, education and employment also increased for non-disabled individuals. These effects align with evidence that the mandates increased spending per student by up to 15%. Families were also impacted: the mandates increased employment among mothers of disabled children and the probability that disabled individuals became household heads. Over the long term, the mandates paid for themselves by generating government revenues in excess of their cost. These results provide new evidence on the large, broad impacts of expanding access to education for disabled students.')">The Short- and Long-Term Impacts of Expanding Public Education for Disabled Students</a>
+                    </td>
+                    <td class="title-chinese">扩大残疾学生公共教育的短期和长期影响</td>
+                    <td><a href="2025-papers/Laura Caron - Columbia - The Short- and Long-Term Impacts of Expanding Public Education for Disabled Students.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Lexin Cai</td>
+                    <td class="university">Cornell</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Lexin Cai', 'Cornell', 'The Long-Term Effects of Universal Free School Meal Policies: Evidence from the Community Eligibility Provision', 'School meal policies in the United States are at a crossroads: half of public K–12 schools provide universal free meals to all students, regardless of income, while the other half offer free and reduced-price (FRP) meals based on income eligibility. Do universal policies improve student outcomes compared to targeted policies for low-income children? I evaluate the short- and long-term effects of universal free school meal policies using linked administrative data from Texas. I exploit the staggered rollout of the Community Eligibility Provision (CEP), a federal policy that allows high-poverty schools to offer meals free to all students. I find that CEP increases meal take-up by 6.2 percentage points (10 percent). Higher-income students previously ineligible for FRP are more responsive to CEP than low-income students already eligible under FRP. Despite the increase in take-up, I detect no improvements in academic, behavioral, or economic outcomes overall or across most subgroups, in either the short or long run. Applying the marginal value of public funds framework, I show that the costs of CEP exceed its benefits, suggesting limited efficiency gains from universal provision relative to targeted support.')">The Long-Term Effects of Universal Free School Meal Policies: Evidence from the Community Eligibility Provision</a>
+                    </td>
+                    <td class="title-chinese">全民免费校餐政策的长期影响：来自社区资格条款的证据</td>
+                    <td><a href="2025-papers/Lexin Cai - Cornell - The Long-Term Effects of Universal Free School Meal Policies_ Evidence from the Community Eligibility Provision.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Mary Quiroga</td>
+                    <td class="university">Michigan</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Mary Quiroga', 'Michigan', 'The Effects of Heat on Teachers and Their Students', 'This paper provides the first evidence that extreme heat directly affects teachers, with consequences for student learning. Using matched student–teacher administrative data from North Carolina linked to high-resolution weather records, the analysis shows that older teachers, who are more sensitive to heat stress, experience greater productivity losses and higher absence rates during hot years. Students of older teachers see test score declines with each additional extreme heat day, effectively erasing the benefits of teaching experience. The cumulative impact of climate change–driven increases in heat is potentially large: equivalent to a shock on test scores comparable to Hurricane Katrina every ten years.')">The Effects of Heat on Teachers and Their Students</a>
+                    </td>
+                    <td class="title-chinese">高温对教师及其学生的影响</td>
+                    <td><a href="2025-papers/Mary Quiroga - Michigan - The Effects of Heat on Teachers and Their Students.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Michael Briskin</td>
+                    <td class="university">Boston U</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Michael Briskin', 'Boston U', 'Teacher Supply and Long-Run Student Outcomes: Evidence from World War II', 'World War II spurred an unprecedented exodus of teachers from American schools, primarily men leaving for military service. Using a difference-in-differences framework that exploits geographic variation in the pre-war gender composition of the teacher workforce and students\\' ages, I estimate the effects of childhood exposure to this teacher supply shock on educational attainment and labor market outcomes. Increased exposure reduces high school and college completion, as well as adult income. States more affected by this shock responded by hiring more teachers on emergency licenses, resulting in a decrease in teachers\\' educational attainment. These changes in the composition of the teacher workforce persisted long after the war, suggesting that even temporary shocks to teacher supply can have lasting impacts on student outcomes through changes in teacher quality.')">Teacher Supply and Long-Run Student Outcomes: Evidence from World War II</a>
+                    </td>
+                    <td class="title-chinese">教师供给与学生长期成果：来自二战的证据</td>
+                    <td><a href="2025-papers/Michael Briskin - Boston U - Teacher Supply and Long-Run Student Outcomes_ Evidence from World War II.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Michael Cuna</td>
+                    <td class="university">Chicago</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Michael Cuna', 'Chicago', 'The Hidden Curriculum', 'We study the hidden curriculum: informal, tacit strategies crucial for academic and career success. These unobserved actions are a critical barrier to information acquisition and limit upward mobility. Using observational and survey data from over 100,000 U.S. college students, we document significant gaps in academic and labor market outcomes, with first-generation students falling behind continuing-generation peers in \"hidden\" actions like proactively engaging with faculty and joining organizations. Through a field experiment at UC Berkeley, we identify two main channels driving this gap: lack of awareness and low subjective beliefs about returns. Information treatments substantially increase willingness to invest in hidden curriculum actions for first-generation students, closing the gap with their more informed peers. Finally, we develop an AI college advisor to further isolate these mechanisms in an online experiment. At baseline, first-generation students devote less search effort to hidden curriculum topics and exhibit lower propensity to switch topics. However, when the AI actively steers conversations toward hidden curriculum actions--increasing awareness--these gaps narrow, providing additional evidence that information constraints drive hidden curriculum underinvestment.')">The Hidden Curriculum</a>
+                    </td>
+                    <td class="title-chinese">隐性课程</td>
+                    <td><a href="2025-papers/Michael Cuna - Chicago - The Hidden Curriculum.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Nagisa Tadjfar</td>
+                    <td class="university">MIT</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Nagisa Tadjfar', 'MIT', 'Prediction or Prejudice? Standardized Testing and University Access', 'Do high-stakes standardized tests expand or inhibit opportunity for low-SES students? We answer this question in the context of the UK\\'s staggered elimination of pre-university exams in favor of teachers\\' predicted exam grades. Eliminating testing increases the university enrollment of low-income students by 3 percentage points (7%), while leaving wealthy students\\' enrollment unchanged. Marginal students induced to enroll in university attain employment at better firms and, in expectation, earn £50,000–£100,000 more over their careers, in net present value. Paradoxically, standardized exams exhibit no calibration bias against marginal low-income students—accurately predicting their university success—whereas teacher-supplied grades are systematically biased in their favor. Despite proper calibration, standardized tests inhibit low-SES students by deterring human capital investment. When tests are eliminated, 5% of low-income students shift into academic tracks. These findings highlight how disparate impacts can arise even when screening algorithms are unbiased. When the measurement of information itself poses a direct disutility, standardized tests generate disparities that commence earlier in the pipeline.')">Prediction or Prejudice? Standardized Testing and University Access</a>
+                    </td>
+                    <td class="title-chinese">预测还是偏见？标准化考试与大学入学</td>
+                    <td><a href="2025-papers/Nagisa Tadjfar - MIT - Prediction or Prejudice_ Standardized Testing and University Access.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Nelson Oviedo</td>
+                    <td class="university">Michigan</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Nelson Oviedo', 'Michigan', 'Equilibrium Effects of Quality Regulation of For-Profit Higher Education', 'This paper studies the equilibrium effects of the Gainful Employment Rule (GER), the largest quality regulation policy in the U.S. higher education market. The rule required for-profit institutions to meet quality standards to retain access to their primary source of revenue: federal student aid. Using administrative data and an event-study design, I find that the GER increased for-profit exit rates by 5 percentage points, while surviving institutions reduced prices and enrollment by 4% and 20%, respectively. Untargeted competitors raised prices without enrollment losses, consistent with increased market power. Informed by these event-study estimates, I develop an equilibrium model of demand and supply with endogenous exit and a quality constraint to evaluate how counterfactual levels of regulatory stringency shape the distribution of value-added within an equity–efficiency framework. I show that tuning regulatory stringency can increase equity without reducing efficiency.')">Equilibrium Effects of Quality Regulation of For-Profit Higher Education</a>
+                    </td>
+                    <td class="title-chinese">营利性高等教育质量监管的均衡效应</td>
+                    <td><a href="2025-papers/Nelson Oviedo - Michigan - Equilibrium Effects of Quality Regulation of For-Profit Higher Education.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Patrick Molligo</td>
+                    <td class="university">UCLA</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Patrick Molligo', 'UCLA', 'The G.I. Bill and vocational school', 'This paper examines the impact of subsidies for vocational training on take-up rates and long-term labor market outcomes by studying the first large-scale public subsidy programs in the United States—–the World War II and Korean War G.I. Bills. Previous research emphasizes that these programs expanded college and high school attainment. I show that they also substantially increased vocational training, a key but overlooked channel through which the G.I. Bill affected human capital formation. Using variation in military service across birth cohorts as an exogenous source of eligibility, I estimate that G.I. Bill benefits increased vocational school completion by 4–9% for World War II veterans and 3–7% for Korean War veterans, with stronger effects in the South and among older beneficiaries. The results suggest that federal subsidies for education not only expanded traditional higher education but also directed many veterans toward trade school—–broadening access to job-specific skills and reshaping the composition of postwar training and employment.')">The G.I. Bill and vocational school</a>
+                    </td>
+                    <td class="title-chinese">《退伍军人权利法案》与职业学校</td>
+                    <td><a href="2025-papers/Patrick Molligo - UCLA - The G.I. Bill and vocational school.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Raymond Han</td>
+                    <td class="university">MIT</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Raymond Han', 'MIT', 'Equilibrium Effects of Neighborhood Schools', 'Many public school districts allow families to enroll in schools outside their neighborhood. At the cost of higher transportation spending, choice programs aim to decouple educational opportunity from residential geography. This paper evaluates the impact of a return to neighborhood-based assignment resulting from Seattle\\'s re-introduction of neighborhood schools in 2010. We quantify the aggregate and distributional consequences of neighborhood assignment using an equilibrium model of joint residential and enrollment choices. We estimate that household relocation mitigates roughly half of the aggregate welfare loss that would occur if household locations were held fixed. Housing cost reductions for low-income renters fully offset welfare losses due to restricted choice. Neighborhood assignment does not appear to have increased racial segregation or reduced the quality of schools attended by low-income families.')">Equilibrium Effects of Neighborhood Schools</a>
+                    </td>
+                    <td class="title-chinese">社区学校的均衡效应</td>
+                    <td><a href="2025-papers/Raymond Han - MIT - Equilibrium Effects of Neighborhood Schools.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Richard Jin</td>
+                    <td class="university">Berkeley</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Richard Jin', 'Berkeley', 'College Alumni Networks and Mobility Across Local Labor Markets', 'We quantify the impact of alumni networks on the geographic mobility of job seekers for nearly 1,400 US colleges and universities. We use detailed employment and education information on LinkedIn users to isolate college-educated workers who faced an exogenous job separation in a mass layoff or firm closure. Using a nested logit model of location choice, we compare the migration decisions of job seekers who were displaced in the same city and who attended different but similar and geographically proximate universities. We find that a 1% increase in the number of co-alumni in the city of displacement increases a job seeker\\'s odds of staying there by 0.4%. Conditional on moving, a 1% increase in a potential destination\\'s number of co-alumni increases the odds of choosing that city over another by 0.9%. Co-alumni may both impact job search and provide local amenities. Using data on the presence or absence of co-alumni at new jobs, we conclude that the job search channel is particularly important. Co-alumni from the same or neighboring graduating class have much larger impacts on location choice, indicating true network effects rather than idiosyncratic matches between alumni of certain colleges and jobs in certain cities. We also find strong impacts of having more local co-alumni who work in the same industry.')">College Alumni Networks and Mobility Across Local Labor Markets</a>
+                    </td>
+                    <td class="title-chinese">大学校友网络与跨地方劳动力市场的流动性</td>
+                    <td><a href="2025-papers/Richard Jin - Berkeley - College Alumni Networks and Mobility Across Local Labor Markets.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Rosie Li</td>
+                    <td class="university">Yale</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Rosie Li', 'Yale', 'The Impact of Open Enrollment on the Capitalization of Neighborhood School Quality in Housing Prices', 'Intra-district open enrollment reduces the link between locations and local school quality. This paper estimates the impact of open enrollment on the housing market and on residential sorting in large school districts across the U.S. I employ a spatial boundary discontinuity design (RD) to estimate the causal effects of neighborhood school quality on housing prices by district-level open enrollment policy adoption status and by time period. Then I employ a difference-in-differences framework to quantify the effect of open enrollment on the capitalization of neighborhood school quality in housing prices after 2014. I find that districts implementing open enrollment experienced a 1.7 percentage-point decline, relative to districts without open enrollment, in neighborhood school quality capitalization effects estimated at around 5% for one standard deviation of school quality in the initial period. Further, using linked data on demographic characteristics of home buyers, I find that open enrollment reduced residential sorting on income along school attendance boundary lines.')">The Impact of Open Enrollment on the Capitalization of Neighborhood School Quality in Housing Prices</a>
+                    </td>
+                    <td class="title-chinese">开放入学对社区学校质量在房价中资本化的影响</td>
+                    <td><a href="2025-papers/Rosie Li - Yale - The Impact of Open Enrollment on the Capitalization of Neighborhood School Quality in Housing Prices.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Rui Zeng</td>
+                    <td class="university">Rice</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Rui Zeng', 'Rice', 'The End of One Exam: Centralized Assignment Reform, Student Choice, and School Quality', 'This paper studies how centralized assignment rules shape student placement and school quality. We examine Mexico\\'s 2025 reform, which replaced exam-based assignment for non-elite schools with a two-list mechanism. Using administrative applicant data and standardized test records, we estimate school value-added as a measure of quality and build a structural model of school demand and supply. On the demand side, we model students\\' school choices and estimate preference parameters under the Stability assumption. On the supply side, schools determine their quality level by trading off enrollment incentives and direct returns to quality against their associated costs. Estimates show students prefer high quality schools. Non-elite schools improve quality only in response to enrollment incentives. In contrast, elite schools respond to both enrollment incentives and direct benefits from providing higher quality. Counterfactuals show that the new system shifts high achievers to non-elite schools; however, it also increases the number of unassigned students. The new system changes school quality, with value-added falling at elite schools and rising at non-elite schools. Yet elite schools continue outperforming non-elite schools. Expanding non-elite capacity reduces unassigned students without altering these effects. This paper highlights both the equity gains and the capacity challenges of the reform.')">The End of One Exam: Centralized Assignment Reform, Student Choice, and School Quality</a>
+                    </td>
+                    <td class="title-chinese">一次考试的终结：集中分配改革、学生选择和学校质量</td>
+                    <td><a href="2025-papers/Rui Zeng - Rice - The End of One Exam.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Shreya Bhardwaj</td>
+                    <td class="university">USC</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Shreya Bhardwaj', 'USC', 'When Quality Counts: Early Childhood Regulation and the Long-Run Development of Human Capital', 'State-level daycare regulations represent a significant policy lever for improving early childhood environments, yet their long-run causal effects remain largely unknown. This paper examines stricter child-to-staff ratios and director education requirements implemented across states between 1984-1994. My identification strategy exploits variation in policy location, timing, and children\\'s age at exposure, using difference-in-differences to estimate causal impacts on adult outcomes measured 25-40 years later.')">When Quality Counts: Early Childhood Regulation and the Long-Run Development of Human Capital</a>
+                    </td>
+                    <td class="title-chinese">质量至关重要：早期儿童监管与人力资本的长期发展</td>
+                    <td><a href="2025-papers/Shreya Bhardwaj - USC - When Quality Counts_ Early Childhood Regulation and the Long-Run Development of Human Capital.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Shwetha Raghuraman</td>
+                    <td class="university">Michigan</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Shwetha Raghuraman', 'Michigan', 'Student Preferences and Horizontal Differentiation in Urban School Choice Markets', 'An understudied component of the district-level education production function is the degree of curricular differentiation across schools. Many urban school districts in the United States offer some degree of choice and curricular differentiation, allowing families to choose among schools with different curricular themes (e.g., arts or science). In this paper, I investigate the impact of curricular themes on segregation, student welfare, and student outcomes in New York City high schools. I estimate a structural model using data on student applications to determine how students trade off curricular themes and other school characteristics in the application process. I find on average that all demographic groups, but particularly white and Asian applicants, prefer Humanities and Interdisciplinary programs, the most general curricular theme, to more specialized themes. Using the model to compare the baseline assignment to a simulated counterfactual assignment in which all programs are Humanities and Interdisciplinary, I find that curricular differentiation slightly increases segregation by race, income, and achievement across high school programs. While on average, students prefer their counterfactual assignment, a substantial minority of applicants, including about half of all Black applicants, would be worse off without curricular differentiation. Finally, I use quasi-experimental variation generated by the assignment mechanism to estimate theme enrollment effects on student outcomes. I find that theme matters for high school outcomes and postsecondary choice, but effects do not vary by theme preference, suggesting limited scope for themes to improve student-school match quality.')">Student Preferences and Horizontal Differentiation in Urban School Choice Markets</a>
+                    </td>
+                    <td class="title-chinese">城市择校市场中的学生偏好与水平差异化</td>
+                    <td><a href="2025-papers/Shwetha Raghuraman - Michigan - Student Preferences and Horizontal Differentiation in Urban School Choice Markets.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Siqi Li</td>
+                    <td class="university">Penn</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Siqi Li', 'Penn', 'Competition, Signaling, and Status Externalities in Ph.D. Admissions', 'Rising competition in imperfect markets pushes agents to invest in costly signals that differentiate themselves. Such investments can mitigate unraveling and improve matching efficiency, but also generate rat races that reallocate resources towards relative standing. I develop an empirical framework to quantify how competition affects signal adoption in matching markets and its welfare consequences, applying it to the role of pre-Ph.D. experiences—master\\'s and predoctoral programs—in Ph.D. admissions. These experiences help programs screen applicants and provide research training. Yet when capacity is limited and grade inflation reduces informativeness, students pursue additional research experience to stand out. Using LinkedIn data on Economics and Business Ph.D.s, I find that pre-Ph.D. experience improves admission outcomes, with 54% of the gain attributable to signaling and 46% to training. While signaling restores about half of the matching efficiency lost under pooling, its opportunity costs exceed benefits, yielding a 15% net welfare loss. Benefits are concentrated among economics majors from top colleges; other groups are worse off. Grade inflation explains roughly one-quarter of the rise in pre-Ph.D. experience.')">Competition, Signaling, and Status Externalities in Ph.D. Admissions</a>
+                    </td>
+                    <td class="title-chinese">博士招生中的竞争、信号传递和地位外部性</td>
+                    <td><a href="2025-papers/Siqi Li - Penn - Competition, Signaling, and Status Externalities in Ph.D. Admissions.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Steven Lee</td>
+                    <td class="university">Brown</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Steven Lee', 'Brown', 'Content Relatability and Standardized Testing: Evidence from Texas', 'One goal of standardized tests is to measure aptitude across heterogeneous students with minimal bias. That different students relate in different ways to topics and characters in exam content could, however, lead to differential test scores even when their aptitude is the same. We study how differential content relatability can affect test scores using item-level data from reading-comprehension exams in Texas. Using time-use data and natural language processing techniques, we first build a novel measure of race- and gender-based relatability to topics in the exams\\' text passages. A 1 standard deviation increase in exam-level topic relatability across race predicts a 0.05 standard deviation change in exam performance, with null effects for gender. We also find that test scores improve on passages with a higher share of characters matching either the student\\'s race or gender. Our estimates suggest that equalizing the relatability of passages in these standardized tests could reduce the Black-White and Hispanic-White testing gaps by up to 8 and 10 percent, respectively. We then counterfactually estimate that during our sample period, close to 12,000 Black students and 34,000 Hispanic students would have been classified at a higher reading-comprehension level had relatability been more equal.')">Content Relatability and Standardized Testing: Evidence from Texas</a>
+                    </td>
+                    <td class="title-chinese">内容相关性与标准化考试：来自德克萨斯州的证据</td>
+                    <td><a href="2025-papers/Steven Lee - Brown - Content Relatability and Standardized Testing_ Evidence from Texas.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Tushar Kundu</td>
+                    <td class="university">Columbia</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Tushar Kundu', 'Columbia', 'Costs or Benefits? Why Students Specialize Across Skills and How Teachers Can Respond', 'When a student is weak in a skill, a key question is why: is it because the skill is hard to learn (costs) or because it has low value to the family (benefits)? Parents have insight into which skills hold value for their child, but large class sizes and informal communication limit teachers\\' access to this information. In this paper, I provide teachers with structured parent information through a field experiment. I survey 3,404 parents across five private schools in India to measure parents\\' perceptions of their children\\'s skill levels and preferences for improvement across academic and socioemotional domains. Parents vary in their preferences over which skills to improve, but on average prefer improving their children\\'s weaker skills. I develop a structural model of skill development showing that this pattern indicates learning costs, rather than family values, primarily drive observed specialization. I elicit teachers\\' beliefs about parent preferences and find little alignment with actual parent views, even at the classroom level. I randomize teacher access to parent survey data via a web portal. Treatment shifts student specialization toward parent-prioritized skills, with larger effects where baseline teacher beliefs were most inaccurate. Structural estimation corroborates these patterns and enables policy counterfactuals quantifying welfare gains from better cost-benefit alignment. The results demonstrate that structured parent feedback enables teachers to target instruction toward what families value most.')">Costs or Benefits? Why Students Specialize Across Skills and How Teachers Can Respond</a>
+                    </td>
+                    <td class="title-chinese">成本还是收益？学生为何跨技能专业化以及教师如何应对</td>
+                    <td><a href="2025-papers/Tushar Kundu - Columbia - Costs or Benefits_ Why Students Specialize Across Skills and How Teachers Can Respond.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Xiaomeng Li</td>
+                    <td class="university">Michigan</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Xiaomeng Li', 'Michigan', 'Learning the Major: The Role of Early Specialization in Educational and Labor Market Outcomes', 'The timing of field specialization involves trade-offs. For example, early specialization may make students more informed about their chosen field, but it may also limit their ability to re-optimize and choose a different field later. Whether early specialization benefits students\\' academic and labor market outcomes is thus unclear. To examine this, I exploit a 2011 policy change at a Midwestern flagship university that incentivized students in the College of Engineering to declare an engineering major earlier. Using a difference-in-differences design, I find that the policy improved academic performance, as reflected in higher GPAs and increased honors graduation rates. LinkedIn-based career data further suggest improved early-career outcomes: greater persistence in engineering roles aligned with their major, longer initial job tenure, and a higher likelihood of attaining managerial positions. These findings are consistent with a dynamic framework in which earlier specialization improves students\\' match with their chosen major through changes in coursetaking: Following earlier declaration, students became significantly more likely to take major-specific high-level coursework, which may help them better assess fit across engineering majors but also reduce flexibility to switch fields more broadly. Consistent with this, students became less likely to exit the College of Engineering altogether, but more likely to switch from one engineering major to another. Taken together, the results suggest that, in settings where students retain flexibility in major selection, incentivizing earlier major declaration can improve student-major match quality.')">Learning the Major: The Role of Early Specialization in Educational and Labor Market Outcomes</a>
+                    </td>
+                    <td class="title-chinese">学习专业：早期专业化在教育和劳动力市场结果中的作用</td>
+                    <td><a href="2025-papers/Xiaomeng Li - Michigan - Learning the Major_ The Role of Early Specialization in Educational and Labor Market Outcomes.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Xuan li</td>
+                    <td class="university">Boston U</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Xuan li', 'Boston U', 'Hate Crimes and Student Outcomes', 'This paper examines the causal impact of exposure to racially targeted hate crimes—an observable and severe form of broader identity-based discrimination---on academic achievement and socio-emotional well-being. We construct a novel dataset that links geocoded hate crime records from Los Angeles County to administrative data from the Los Angeles Unified School District spanning 2008–2024. We separately estimate the effects of school- and neighborhood-level exposure using two complementary difference-in-differences designs: one comparing targeted students in treated schools with peers in similar control schools, and another exploiting hyperlocal variation in students\\' proximity to hate crimes within the same neighborhood. Exposure to anti-Hispanic hate crimes leads to persistent GPA declines among Hispanic students—by 0.07 points for school-based and 0.06 for neighborhood-based exposure. It also temporarily increases disciplinary referrals and lowers students\\' perceived safety. By contrast, we find no effects of anti-Black hate crimes, and anti-Hispanic hate crimes have no effects on non-Hispanic students. Taken together, the findings suggest that being part of a group targeted by hate crimes reduces human capital formation, influences educational trajectories, and deepens racial inequalities.')">Hate Crimes and Student Outcomes</a>
+                    </td>
+                    <td class="title-chinese">仇恨犯罪与学生成果</td>
+                    <td><a href="#" class="pdf-link" target="_blank" style="background-color: #ffcccc; color: #666;">PDF Not Available</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Xuan li</td>
+                    <td class="university">Boston U</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Xuan li', 'Boston U', 'Testing Away from One\\'s Own School: Exam Location and Performance in High-Stakes Exams', 'High-stakes exams are often administered at designated test centers, requiring many students to test in unfamiliar environments. We investigate whether such arrangements impact students\\' test performance and, by extension, access to educational opportunities. Using unique administrative data from China\\'s national college entrance examination between 2016 and 2018 and its random assignment of test centers, we find that students assigned to a non-home school score 0.14 standard deviations lower than classmates testing at their home school, and they are 3.8 percentage points less likely to be admitted to college. The performance penalty is most pronounced in STEM subjects and partly driven by longer travel distances. Furthermore, it has significant inequality implications: the penalty is especially severe for low-achieving students and those from disadvantaged backgrounds. As test centers are predominantly located in high-performing schools, such ostensibly neutral assignment policies may unintentionally exacerbate existing achievement gaps between privileged and less privileged groups. A back-of-the-envelope calculation suggests that exam location accounts for over 7.6% of the observed performance gap between students from test-center and non-test-center schools.')">Testing Away from One's Own School: Exam Location and Performance in High-Stakes Exams</a>
+                    </td>
+                    <td class="title-chinese">远离本校考试：考试地点与高风险考试表现</td>
+                    <td><a href="2025-papers/Xuan li - Boston U - Testing Away from One's Own School_ Exam Location and Performance in High-Stakes Exams.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Zach Weingarten</td>
+                    <td class="university">Penn</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Zach Weingarten', 'Penn', 'Designing Optimal School Choice Admissions Policies: Insights from a Lottery-Based Reform', 'Many public school districts changed admissions criteria for magnet and other selective schools to expand access to underrepresented groups. Such reforms can also change students\\' application and enrollment choices, with downstream effects on school-level test score value-added, peer composition, and student-school match quality. This paper considers how to best design admissions rules to balance equity and efficiency trade-offs when students respond strategically and peer effects are endogenous. We study a natural experiment in Toronto, where achievement-based admissions to high school magnet programs were replaced with a centralized lottery that included race and gender quotas. We use an instrumental variables strategy based on randomized offers to identify the causal effects of magnet admission and exploit the policy\\'s rollout to estimate its impact on district-wide student sorting, peer composition, and school-level value-added. We then develop and estimate an equilibrium school choice model with strategic application choices, peer effects that affect both the demand for schools and their value-added, and admissions decisions under both policies. In counterfactual policy experiments, we find that the reform raised average student welfare but generated large losses for students who would have been admitted under the original policy. In addition, the reform reduced segregation at the expense of match quality. This equity-efficiency trade-off persists even when either of the two studied Toronto policies are re-optimized to maximize efficiency. We show that strategy-proof, two-sided stable mechanisms based on Deferred Acceptance deliver the highest match quality among the policies considered and improve equity relative to the baseline.')">Designing Optimal School Choice Admissions Policies: Insights from a Lottery-Based Reform</a>
+                    </td>
+                    <td class="title-chinese">设计最优择校招生政策：来自基于抽签改革的见解</td>
+                    <td><a href="2025-papers/Zach Weingarten - Penn - Designing Optimal School Choice Admissions Policies- Insights from a Lottery-Based Reform.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+                <tr>
+                    <td class="name">Zach Weingarten</td>
+                    <td class="university">Penn</td>
+                    <td class="title">
+                        <a href="#" class="title-link" onclick="showAbstract('Zach Weingarten', 'Penn', 'The Unintended Consequences of Academic Leniency', 'Education is widely recognized as the primary driver of human capital accumulation. However, policies designed to promote educational attainment often overlook students\\' endogenous responses. This paper provides empirical evidence of the causal impact of relaxed academic standards on student effort and achievement. We find that academic leniency results in mechanical GPA increases, but significant reductions in effort among lower ability students based on lower attendance and lower numerical grades. These heterogeneous effects compound and exacerbate gaps in engagement and achievement throughout high school, ultimately worsening deficits in human capital accumulation as measured by ACT scores.')">The Unintended Consequences of Academic Leniency</a>
+                    </td>
+                    <td class="title-chinese">学术宽松的意外后果</td>
+                    <td><a href="2025-papers/Zach Weingarten - Penn - The Unintended Consequences of Academic Leniency.pdf" class="pdf-link" target="_blank">View PDF</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="program-section">
+            <h2 style="text-align:center;">骑着 AI，突破人类尺度，驶向未来</h2>
+            <p style="text-align:center;">生产和传播先进科学；<br>生产和传播现代文艺；<br>生产和传播人类善良。</p>
+        </div>
+        
+        <div class="footer">
+            友松实验室 · Yu Soong Lab<br>
+            因果推断 × 人工智能 × 行为经济学2.0
+        </div>
+    </div>
+
+    <!-- Modal for displaying abstracts -->
+    <div id="abstractModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <p class="modal-author" id="modalAuthor"></p>
+            <div class="modal-abstract" id="modalAbstract"></div>
+        </div>
+    </div>
+
+    <script>
+        // Sorting functionality
+        let sortDirection = {};
+        
+        function sortTable(columnIndex) {
+            const table = document.getElementById('papersTable');
+            const tbody = table.getElementsByTagName('tbody')[0];
+            const rows = Array.from(tbody.getElementsByTagName('tr'));
+            const headers = table.getElementsByTagName('th');
+            
+            // Clear previous sort indicators
+            for (let i = 0; i < headers.length; i++) {
+                headers[i].classList.remove('sort-asc', 'sort-desc');
+            }
+            
+            // Determine sort direction
+            const currentDirection = sortDirection[columnIndex] || 'asc';
+            const newDirection = currentDirection === 'asc' ? 'desc' : 'asc';
+            sortDirection[columnIndex] = newDirection;
+            
+            // Sort rows
+            rows.sort((a, b) => {
+                let aText = a.getElementsByTagName('td')[columnIndex].textContent.trim();
+                let bText = b.getElementsByTagName('td')[columnIndex].textContent.trim();
+                
+                // If sorting by name (column 0), extract last name
+                if (columnIndex === 0) {
+                    aText = aText.split(' ').pop(); // Get last word (last name)
+                    bText = bText.split(' ').pop(); // Get last word (last name)
+                }
+                
+                if (newDirection === 'asc') {
+                    return aText.localeCompare(bText);
+                } else {
+                    return bText.localeCompare(aText);
+                }
+            });
+            
+            // Update table
+            rows.forEach(row => tbody.appendChild(row));
+            
+            // Update sort indicator
+            headers[columnIndex].classList.add(newDirection === 'asc' ? 'sort-asc' : 'sort-desc');
+        }
+        
+        // Modal functionality
+        function showAbstract(author, university, title, abstract) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalAuthor').textContent = author + ' - ' + university;
+            document.getElementById('modalAbstract').textContent = abstract;
+            document.getElementById('abstractModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('abstractModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('abstractModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
