@@ -376,11 +376,12 @@ ${H.acknowledgements}
           .page-break { page-break-after: always; }
           body { -webkit-print-color-adjust: exact; print-color-adjust: exact; margin: 0; padding: 0; }
           .thesis-preview, .tufte-container {
-            width: 100% !important;
+            width: auto !important;
             max-width: none !important;
-            margin: 0 !important;
-            padding: 25.4mm !important; /* Symmetric padding for print */
+            margin: 25.4mm !important; /* Use margin for print boundaries */
+            padding: 0 !important;
             box-shadow: none !important;
+            box-sizing: border-box !important;
           }
         }
         body {
