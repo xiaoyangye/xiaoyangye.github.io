@@ -338,7 +338,7 @@ ${H.acknowledgements}
         ${H.acknowledgements}
       </div>
     </div>
-  `;return{html:`<article class="thesis-preview font-serif bg-white text-[#333]" style="width: 210mm; min-height: 297mm; padding: 25.4mm;">
+  `;return{html:`<article class="thesis-preview font-serif bg-white text-[#333]">
     ${ut}
     ${z}
     ${C}
@@ -347,7 +347,7 @@ ${H.acknowledgements}
   </article>`,typst:"",bib:""}},Kp=H=>{let ut=H.content;const y=ut.match(/^#\s+(.+)$/m),z=y?y[1]:H.name.replace(".md","");ut=ut.replace(/^---\s*[\s\S]*?^---\s*$/m,"");const C=ut.split(/\n\n+/);let h="",g=!0;C.forEach(S=>{if(S=S.trim(),!!S)if(S.startsWith("# ")){if(g){g=!1;return}h+=`<h2 class="tufte-section">${S.replace("# ","")}</h2>`}else if(S.startsWith("## "))h+=`<h3 class="tufte-subsection">${S.replace("## ","")}</h3>`;else if(S.startsWith("### "))h+=`<h4 class="tufte-subsubsection">${S.replace("### ","")}</h4>`;else if(S.startsWith("> ")){const v=S.replace(/^>\s*/gm,"");h+=`<span class="tufte-sidenote">${v}</span>`}else if(S.startsWith("- ")||S.startsWith("* ")){const v=S.split(`
 `).map(A=>`<li>${A.replace(/^[-*]\s+/,"")}</li>`).join("");h+=`<ul class="tufte-list">${v}</ul>`}else if(S.match(/^\d+\.\s/)){const v=S.split(`
 `).map(A=>`<li>${A.replace(/^\d+\.\s+/,"")}</li>`).join("");h+=`<ol class="tufte-list">${v}</ol>`}else{let v=S;v=v.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>"),v=v.replace(/\*(.*?)\*/g,"<em>$1</em>"),v=v.replace(/`(.*?)`/g,"<code>$1</code>"),v=v.replace(/!\[(.*?)\]\((.*?)\)/g,'<figure class="tufte-figure"><img src="$2" alt="$1"/><figcaption>$1</figcaption></figure>'),h+=`<p>${v}</p>`}});const c=H.name.includes("日记"),m=H.name.includes("笔记");return{html:`
-    <article class="tufte-container ${c?"tufte-diary":""}" style="width: 210mm; min-height: 297mm; padding: 12.7mm; box-sizing: border-box;">
+    <article class="tufte-container ${c?"tufte-diary":""}">
       <header class="tufte-header">
         <h1 class="tufte-title">${z}</h1>
         <p class="tufte-subtitle">${c?"论文写作历程记录":m?"研究灵感与想法":"笔记文档"}</p>
@@ -372,17 +372,34 @@ ${H.acknowledgements}
           margin: 0;
         }
         @media print {
+          @page { margin: 0; size: A4; }
           .page-break { page-break-after: always; }
-          body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          body { -webkit-print-color-adjust: exact; print-color-adjust: exact; margin: 0; padding: 0; }
+          .thesis-preview, .tufte-container {
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 25.4mm !important; /* Symmetric padding for print */
+            box-shadow: none !important;
+          }
         }
         body {
           font-family: 'Noto Serif SC', 'Source Sans Pro', serif;
           font-size: 12pt;
           line-height: 1.8;
           color: #333;
-          max-width: 210mm;
-          margin: 0 auto;
+          margin: 0;
           padding: 0;
+          background-color: #f0f0f0; /* Gray background for screen view */
+        }
+        /* Screen only container styles */
+        .thesis-preview, .tufte-container {
+          background-color: white;
+          width: 210mm;
+          min-height: 297mm;
+          margin: 20px auto;
+          padding: 25.4mm;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         h1, h2, h3 { font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; }
         h1 { font-size: 22pt; }
